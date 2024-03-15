@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70">
+  <g id="Group_2105" data-name="Group 2105" transform="translate(-411 -169)">
+    <g id="Rectangle_2068" data-name="Rectangle 2068" transform="translate(411 169)" fill="#fff" stroke="#b4c2cf" stroke-width="2">
+      <rect width="70" height="70" rx="35" stroke="none"/>
+      <rect x="1" y="1" width="68" height="68" rx="34" fill="none"/>
+    </g>
+    <path id="Intersection_1" data-name="Intersection 1" d="M-1135.708,57.622A40.34,40.34,0,0,1-1109.5,48h1a40.342,40.342,0,0,1,26.208,9.622A34.921,34.921,0,0,1-1109,70,34.922,34.922,0,0,1-1135.708,57.622Z" transform="translate(1555 169)" fill="#b4c2cf"/>
+    <rect id="Rectangle_2066" data-name="Rectangle 2066" width="22" height="22" rx="11" transform="translate(435 192)" fill="#b4c2cf"/>
+  </g>
+</svg>
