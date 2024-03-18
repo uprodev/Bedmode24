@@ -103,11 +103,35 @@ jQuery(document).ready(function ($) {
   }
 
   //slider
-  var swiperProduct = new Swiper(".slider-product", {
+  var swiperProduct1 = new Swiper(".slider-product-1", {
     slidesPerView: 1,
     spaceBetween: 10,
     pagination: {
-      el: ".product-pagination",
+      el: ".product-pagination-1",
+      clickable: true,
+    },
+    breakpoints: {
+      480: {
+        slidesPerView: 2,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 15,
+      },
+    },
+  });
+
+  //slider
+  var swiperProduct2 = new Swiper(".slider-product-2", {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    pagination: {
+      el: ".product-pagination-2",
       clickable: true,
     },
     breakpoints: {
@@ -162,6 +186,59 @@ jQuery(document).ready(function ($) {
       clickable: true,
     },
   });
+
+
+  //slider
+  var swiperMini = new Swiper(".slider-mini", {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      768: {
+        spaceBetween: 18,
+      },
+    },
+  });
+  //slider
+  var swiperBig = new Swiper(".slider-big", {
+    spaceBetween: 10,
+
+    thumbs: {
+      swiper: swiperMini,
+    },
+  });
+
+  //TABS
+  (function($){
+    jQuery.fn.lightTabs = function(options){
+
+      var createTabs = function(){
+        tabs = this;
+        i = 0;
+
+        showPage = function(i){
+          $(tabs).find(".tab-content").children("div").hide();
+          $(tabs).find(".tab-content").children("div").eq(i).show();
+          $(tabs).find(".tabs-menu").children("li").removeClass("is-active");
+          $(tabs).find(".tabs-menu").children("li").eq(i).addClass("is-active");
+        }
+
+        showPage(0);
+
+        $(tabs).find(".tabs-menu").children("li").each(function(index, element){
+          $(element).attr("data-page", i);
+          i++;
+        });
+
+        $(tabs).find(".tabs-menu").children("li").click(function(){
+          showPage(parseInt($(this).attr("data-page")));
+        });
+      };
+      return this.each(createTabs);
+    };
+  })(jQuery);
+  $(".tabs").lightTabs();
 
 
 });
