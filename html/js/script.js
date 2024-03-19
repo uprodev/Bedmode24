@@ -241,4 +241,16 @@ jQuery(document).ready(function ($) {
   $(".tabs").lightTabs();
 
 
+  //open filter mob
+  $(document).on('click', '.btn-mob-open-filter a', function (e){
+    e.preventDefault();
+    $('.product-content .filter').addClass('is-open')
+  });
+
+  //close filter mob
+  $(document).on('click', '.close-filter', function (e){
+    e.preventDefault();
+    $('.product-content .filter').removeClass('is-open')
+  });
+
 });
