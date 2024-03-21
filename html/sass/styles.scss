@@ -298,7 +298,7 @@ input, textarea, button{
 }
 header{
   position: relative;
-  z-index: 99;
+  z-index: 9999;
 }
 
 .cart-popup {
@@ -566,9 +566,7 @@ header{
       .sub-menu{
         opacity: 1;
         pointer-events: auto;
-        -webkit-transform: scale(1) translateY(0);
-        -ms-transform: scale(1) translateY(0);
-        transform: scale(1) translateY(0);
+
       }
     }
 
@@ -580,9 +578,6 @@ header{
     -webkit-transform-origin: 50% 0;
     -ms-transform-origin: 50% 0;
     transform-origin: 50% 0;
-    -webkit-transform: scale(0.75) translateY(-21px);
-    -ms-transform: scale(0.75) translateY(-21px);
-    transform: scale(0.75) translateY(-21px);
     -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     z-index: 9;
@@ -851,7 +846,7 @@ h1{
 /*------------------------FOOTER---------------------------*/
 footer{
   position: relative;
-  padding: 32px 0 80px;
+  padding: 32px 0 30px;
   border-top: 11px solid #0c2e45;
   overflow: hidden;
   .bg{
@@ -986,7 +981,7 @@ footer{
     li{
       margin-right: 25px;
       a{
-        font-size: 14px;
+        font-size: 18px;
         line-height: 1;
         color: #fff;
         &:hover{
@@ -1194,12 +1189,12 @@ footer .list-footer li {
 }
 
 .home-banner .big-item a:hover .arrow-wrap:after, .home-banner .item a:hover .arrow-wrap:after{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 .home-banner .big-item a:hover .arrow-wrap, .home-banner .item a:hover .arrow-wrap{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .home-banner .item a figure{
@@ -1593,6 +1588,7 @@ h2{
       position: absolute;
       bottom: 10px;
       left: 24px;
+      z-index: 99;
       .title{
         font-size: 20px;
         font-weight: bold;
@@ -1612,10 +1608,10 @@ h2{
       z-index: 3;
       bottom: 0;
       right: 0;
-      overflow: hidden;
+
       -webkit-transition: all .4s ease;
       transition: all .4s ease;
-      a{
+      a, .link{
         display: block;
         width: 100%;
         height: 100%;
@@ -1645,24 +1641,30 @@ h2{
         }
       }
     }
-    .link-wrap:hover{
-      height: 100px;
-      width: 100px;
-      a:after{
-        width: 150px;
-        height: 150px;
-      }
-    }
+
   }
   .btn-wrap-full{
     margin-top: 40px;
   }
 }
+
+.small-links-3x .item a:hover{
+  .link-wrap{
+    height: 80px;
+    width: 80px;
+    .link:after{
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
 /*-------------------END-SMALL-LINKS-3X--------------------------*/
 /*-------------------CARD-LINKS--------------------------*/
 .card-links{
   padding: 25px 0 32px;
   position: relative;
+  background-color: #9d9996;
   .bg{
     img{
       width: 100%;
@@ -1774,12 +1776,12 @@ h2{
 }
 
 .card-links .item a:hover .arrow-wrap:after{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 .card-links .item a:hover .arrow-wrap{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 /*------------------END-CARD-LINKS--------------------------*/
 /*------------------IMG-TEXT------------------------*/
@@ -2026,20 +2028,20 @@ h2{
 }
 
 .card-3x .item a:hover .arrow-wrap:after{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 .card-3x .item a:hover .arrow-wrap{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .card-3x .item a.arrow-wrap:hover:after{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 .card-3x .item a.arrow-wrap:hover{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 .card-3x .item figure{
   padding: 15px;
@@ -2149,6 +2151,18 @@ h2{
       height: 100%;
     }
   }
+}
+.card-3x-about .item .arrow-wrap:before{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: '';
+  width: 1000px;
+  height: 1000px;
+}
+
+.card-3x-about .item .arrow-wrap{
+  overflow: visible;
 }
 /*------------------END-CARD-3X-ABOUT-----------------*/
 /*-----------------BASE-FILTER-----------------*/
@@ -2411,12 +2425,12 @@ h2{
 }
 
 .base-3x .item figure a:hover .arrow-wrap:after{
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 .base-3x .item figure a:hover .arrow-wrap{
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 /*---------------------END-BASE-3X-----------------*/
 /*---------------------BASE-BANNER----------------------*/
@@ -3751,6 +3765,9 @@ input[type=number] {
   }
   .bg{
     border-radius: 3px;
+    &:after{
+      background: linear-gradient(90deg, rgba(13, 27, 43, 0.8) 10%, rgba(255, 255, 255, 0) 100%);
+    }
   }
 }
 
@@ -4005,6 +4022,15 @@ input[type=number] {
   }
 }
 /*------------------END-PRODUCT-4X--------------------*/
+.pb-6 {
+  padding-bottom: 4rem !important;
+}
+.pb-7 {
+  padding-bottom: 5rem !important;
+}
+.pb-8 {
+  padding-bottom: 6rem !important;
+}
 .bg-grey{
   background-color: #9d9996;
   h2{

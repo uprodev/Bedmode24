@@ -276,7 +276,7 @@ input, textarea, button {
 
 header {
   position: relative;
-  z-index: 99; }
+  z-index: 9999; }
 
 .cart-popup {
   width: 400px;
@@ -561,17 +561,13 @@ header {
     border-right: 1px solid #b5b5b5; }
   .top-menu .sub-item:hover .sub-menu {
     opacity: 1;
-    pointer-events: auto;
-    -webkit-transform: scale(1) translateY(0);
-    transform: scale(1) translateY(0); }
+    pointer-events: auto; }
   .top-menu .sub-menu {
     position: absolute;
     top: 100%;
     left: 0;
     -webkit-transform-origin: 50% 0;
     transform-origin: 50% 0;
-    -webkit-transform: scale(0.75) translateY(-21px);
-    transform: scale(0.75) translateY(-21px);
     -webkit-transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     z-index: 9;
@@ -818,7 +814,7 @@ h1 {
 /*------------------------FOOTER---------------------------*/
 footer {
   position: relative;
-  padding: 32px 0 80px;
+  padding: 32px 0 30px;
   border-top: 11px solid #0c2e45;
   overflow: hidden; }
   footer .bg img {
@@ -935,7 +931,7 @@ footer {
   footer .soc-list li {
     margin-right: 25px; }
     footer .soc-list li a {
-      font-size: 14px;
+      font-size: 18px;
       line-height: 1;
       color: #fff; }
       footer .soc-list li a:hover {
@@ -1110,12 +1106,12 @@ footer .list-footer li {
     margin-bottom: 4px; }
 
 .home-banner .big-item a:hover .arrow-wrap:after, .home-banner .item a:hover .arrow-wrap:after {
-  width: 150px;
-  height: 150px; }
+  width: 120px;
+  height: 120px; }
 
 .home-banner .big-item a:hover .arrow-wrap, .home-banner .item a:hover .arrow-wrap {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
 
 .home-banner .item a figure {
   height: 203px; }
@@ -1467,7 +1463,8 @@ h2 {
     .small-links-3x .item .text {
       position: absolute;
       bottom: 10px;
-      left: 24px; }
+      left: 24px;
+      z-index: 99; }
       .small-links-3x .item .text .title {
         font-size: 20px;
         font-weight: bold;
@@ -1485,24 +1482,23 @@ h2 {
       z-index: 3;
       bottom: 0;
       right: 0;
-      overflow: hidden;
       -webkit-transition: all .4s ease;
       transition: all .4s ease; }
-      .small-links-3x .item .link-wrap a {
+      .small-links-3x .item .link-wrap a, .small-links-3x .item .link-wrap .link {
         display: block;
         width: 100%;
         height: 100%;
         position: relative; }
-        .small-links-3x .item .link-wrap a span {
+        .small-links-3x .item .link-wrap a span, .small-links-3x .item .link-wrap .link span {
           position: absolute;
           z-index: 4;
           bottom: 17px;
           right: 20px; }
-        .small-links-3x .item .link-wrap a i {
+        .small-links-3x .item .link-wrap a i, .small-links-3x .item .link-wrap .link i {
           font-size: 20px;
           line-height: 1;
           color: #fff; }
-        .small-links-3x .item .link-wrap a:after {
+        .small-links-3x .item .link-wrap a:after, .small-links-3x .item .link-wrap .link:after {
           position: absolute;
           top: 0;
           left: 0;
@@ -1513,20 +1509,22 @@ h2 {
           border-radius: 100%;
           -webkit-transition: all .4s ease;
           transition: all .4s ease; }
-    .small-links-3x .item .link-wrap:hover {
-      height: 100px;
-      width: 100px; }
-      .small-links-3x .item .link-wrap:hover a:after {
-        width: 150px;
-        height: 150px; }
   .small-links-3x .btn-wrap-full {
     margin-top: 40px; }
+
+.small-links-3x .item a:hover .link-wrap {
+  height: 80px;
+  width: 80px; }
+  .small-links-3x .item a:hover .link-wrap .link:after {
+    width: 120px;
+    height: 120px; }
 
 /*-------------------END-SMALL-LINKS-3X--------------------------*/
 /*-------------------CARD-LINKS--------------------------*/
 .card-links {
   padding: 25px 0 32px;
-  position: relative; }
+  position: relative;
+  background-color: #9d9996; }
   .card-links .bg img {
     width: 100%;
     height: 100%;
@@ -1632,12 +1630,12 @@ h2 {
     margin-top: 10px; }
 
 .card-links .item a:hover .arrow-wrap:after {
-  width: 150px;
-  height: 150px; }
+  width: 120px;
+  height: 120px; }
 
 .card-links .item a:hover .arrow-wrap {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
 
 /*------------------END-CARD-LINKS--------------------------*/
 /*------------------IMG-TEXT------------------------*/
@@ -1862,20 +1860,20 @@ h2 {
     margin-top: 38px; }
 
 .card-3x .item a:hover .arrow-wrap:after {
-  width: 150px;
-  height: 150px; }
+  width: 120px;
+  height: 120px; }
 
 .card-3x .item a:hover .arrow-wrap {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
 
 .card-3x .item a.arrow-wrap:hover:after {
-  width: 150px;
-  height: 150px; }
+  width: 120px;
+  height: 120px; }
 
 .card-3x .item a.arrow-wrap:hover {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
 
 .card-3x .item figure {
   padding: 15px; }
@@ -1969,6 +1967,17 @@ h2 {
          object-fit: cover;
       width: 100%;
       height: 100%; }
+
+.card-3x-about .item .arrow-wrap:before {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: '';
+  width: 1000px;
+  height: 1000px; }
+
+.card-3x-about .item .arrow-wrap {
+  overflow: visible; }
 
 /*------------------END-CARD-3X-ABOUT-----------------*/
 /*-----------------BASE-FILTER-----------------*/
@@ -2185,12 +2194,12 @@ h2 {
     margin-top: 41px; }
 
 .base-3x .item figure a:hover .arrow-wrap:after {
-  width: 150px;
-  height: 150px; }
+  width: 120px;
+  height: 120px; }
 
 .base-3x .item figure a:hover .arrow-wrap {
-  width: 100px;
-  height: 100px; }
+  width: 80px;
+  height: 80px; }
 
 /*---------------------END-BASE-3X-----------------*/
 /*---------------------BASE-BANNER----------------------*/
@@ -3347,6 +3356,9 @@ input[type=number] {
     padding: 35px 10px 20px 43px; }
   .page-title-bg-small .bg {
     border-radius: 3px; }
+    .page-title-bg-small .bg:after {
+      background: -webkit-gradient(linear, left top, right top, color-stop(10%, rgba(13, 27, 43, 0.8)), to(rgba(255, 255, 255, 0)));
+      background: linear-gradient(90deg, rgba(13, 27, 43, 0.8) 10%, rgba(255, 255, 255, 0) 100%); }
 
 .slider-product {
   height: -webkit-fit-content;
@@ -3580,6 +3592,15 @@ input[type=number] {
     width: 100%; }
 
 /*------------------END-PRODUCT-4X--------------------*/
+.pb-6 {
+  padding-bottom: 4rem !important; }
+
+.pb-7 {
+  padding-bottom: 5rem !important; }
+
+.pb-8 {
+  padding-bottom: 6rem !important; }
+
 .bg-grey {
   background-color: #9d9996; }
   .bg-grey h2 {
