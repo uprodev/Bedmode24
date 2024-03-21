@@ -610,7 +610,12 @@
     grid-gap: 8px; }
 
   .product-4x .content-4x {
-    grid-template-columns: repeat(2, 1fr); } }
+    grid-template-columns: repeat(2, 1fr); }
+
+  .text-default figure img {
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; } }
 @media (max-width: 575px) {
   .content-width, .container {
     width: 100%;
