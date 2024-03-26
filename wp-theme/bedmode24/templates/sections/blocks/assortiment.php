@@ -3,10 +3,11 @@
 $title = get_sub_field('title');
 $prods= get_sub_field('prods');
 $link = get_sub_field('link');
+$bgc = get_sub_field('background_color');
 
 ?>
 
-<section class="product-mini bg-grey">
+<section class="product-mini bg-<?= $bgc;?>">
     <div class="container">
         <div class="row">
             <?php if($title):?>
