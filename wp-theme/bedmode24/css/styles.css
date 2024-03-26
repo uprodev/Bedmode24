@@ -929,9 +929,9 @@ footer {
     footer .info-list li:last-child {
       margin-bottom: 0; }
   footer .soc-list li {
-    margin-right: 25px; }
+    margin-right: 20px; }
     footer .soc-list li a {
-      font-size: 18px;
+      font-size: 22px;
       line-height: 1;
       color: #fff; }
       footer .soc-list li a:hover {
@@ -1047,7 +1047,7 @@ footer .list-footer li {
         position: absolute;
         left: 18px;
         bottom: 12px;
-        z-index: 3; }
+        z-index: 5; }
       .home-banner .big-item a .arrow-wrap, .home-banner .item a .arrow-wrap {
         width: 73px;
         height: 73px;
