@@ -35,7 +35,7 @@ $link_btn = get_sub_field('link');
                                     </div>
                                 <?php endif;?>
 
-                                <?php if($image):?>
+                                <?php if($title):?>
                                     <div class="text">
                                         <h6 class="title"><?= $title;?></h6>
                                     </div>
