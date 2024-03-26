@@ -2,7 +2,7 @@
 
 <footer>
     <div class="bg">
-        <img src="img/bg-footer.jpg" alt="" class="bg">
+        <img src="<?= get_template_directory_uri();?>/img/bg-footer.jpg" alt="" class="bg">
         <!--<img src="img/bg-grid.png" alt="" class="bg-after">-->
     </div>
     <div class="container">

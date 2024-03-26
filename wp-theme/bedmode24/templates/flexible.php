@@ -4,11 +4,11 @@ $id = get_the_ID();
 
 ?>
 
-<?php if( have_rows('heroes', $id) ): ?>
+<?php if( have_rows('banners', $id) ): ?>
 
-    <?php while( have_rows('heroes', $id) ): the_row(); ?>
+    <?php while( have_rows('banners', $id) ): the_row(); ?>
 
-        <?php get_template_part('templates/sections/heroes/' . get_row_layout()); ?>
+        <?php get_template_part('templates/sections/banners/' . get_row_layout()); ?>
 
     <?php endwhile; ?>
 
@@ -18,7 +18,7 @@ $id = get_the_ID();
 
     <?php while( have_rows('content', $id) ): the_row(); ?>
 
-        <?php get_template_part('templates/sections/' . get_row_layout()); ?>
+        <?php get_template_part('templates/sections/blocks/' . get_row_layout()); ?>
 
     <?php endwhile; ?>
 

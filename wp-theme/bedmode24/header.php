@@ -54,17 +54,19 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="logo-wrap col-4 col-sm-3 p-0">
-                            <a href="index.html">
-                                <img src="img/logo.svg" alt="">
-                            </a>
+                            <?php $logo = get_field('logo', 'options');
+
+                            if($logo):?>
+
+                                <a href="<?= get_home_url();?>">
+                                    <img src="<?= $logo['url'];?>" alt="<?= $logo['alt'];?>">
+                                </a>
+
+                            <?php endif;?>
                         </div>
                         <div class="wrap col-8 col-sm-9 d-flex justify-content-lg-between justify-content-end">
                             <div class="search-wrap d-none d-lg-block">
-                                <form action="#">
-                                    <label for="search"></label>
-                                    <input type="search" name="search" id="search" placeholder="Zoek producten…">
-                                    <button type="submit" class="btn d-flex align-items-center justify-content-center"><i class="far fa-search"></i></button>
-                                </form>
+                                <?= do_shortcode('[fibosearch]'); ?>
                             </div>
                             <div class="icon-wrap d-flex align-items-center justify-content-end ">
                                 <div class="item item-service">
