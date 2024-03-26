@@ -1,41 +1,49 @@
 <?php
 
+$title = get_sub_field('title');
+$subtitle = get_sub_field('subtitle');
+$text= get_sub_field('text');
+$link = get_sub_field('link');
+$image = get_sub_field('image');
+$bg = get_sub_field('background');
+$width = get_sub_field('container_width');
+$position = get_sub_field('image_position');
 
 ?>
 
-<!--нужно добалять класи в секцию small-block - блок буде маленький, img-text-revers - менять местами картинку с текстом-->
-<section class="img-text small-block">
+<section class="img-text<?= $width?' small-block':'';?><?= $position?' img-text-revers':'';?><?= $bg=='grey'?'':' bg-light-grey';?>">
     <div class="container">
         <div class="row">
             <div class="content d-flex justify-content-between flex-wrap align-items-center">
-                <figure class="col-sm-6 col-12">
-                    <img src="img/img-6.jpg" alt="">
-                </figure>
+
+                <?php if($image):?>
+                    <figure class="col-sm-6 col-12">
+                        <img src="<?= $image['url'];?>" alt="<?= $image['alt'];?>">
+                    </figure>
+                <?php endif;?>
+
                 <div class="text col-sm-5 col-12">
-                    <h6 class="sub-title">Subtittel</h6>
-                    <h2>Integer posuere erat a ante venenatis dapibus</h2>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor labore. Lorem ipsum dolor sit amet, consetetur
-                        <a href="#">sadipscing</a> elitr, sed diam nonumy eirmod tempor labore.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="img-text small-block img-text-revers bg-light-grey">
-    <div class="container">
-        <div class="row">
-            <div class="content d-flex justify-content-between flex-wrap align-items-center">
-                <figure class="col-sm-6 col-12">
-                    <img src="img/img-7.jpg" alt="">
-                </figure>
-                <div class="text col-sm-5 col-12">
-                    <h6 class="sub-title">Subtittel</h6>
-                    <h2>Integer posuere erat a ante venenatis dapibus</h2>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor labore. Lorem ipsum dolor sit amet, consetetur
-                        <a href="#">sadipscing</a> elitr, sed diam nonumy eirmod tempor labore.</p>
-                    <div class="btn-wrap">
-                        <a href="#" class="btn-default rounded-5">Meer inspiratie</a>
-                    </div>
+
+                    <?php if($subtitle):?>
+                        <h6 class="sub-title"><?= $subtitle;?></h6>
+                    <?php endif;?>
+
+                    <?php if($title):?>
+                        <h2><?= $title;?></h2>
+                    <?php endif;?>
+
+                    <?= $text;?>
+
+                    <?php if( $link ):
+                        $link_url = $link['url'];
+                        $link_title = $link['title'];
+                        $link_target = $link['target'] ? $link['target'] : '_self';
+                        ?>
+                        <div class="btn-wrap">
+                            <a class="btn-default rounded-5" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </div>
