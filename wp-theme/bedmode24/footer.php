@@ -9,9 +9,15 @@
         <div class="row">
             <div class="logo-wrap col-12 d-flex justify-content-center p-0">
                 <div class="line"></div>
-                <a href="#">
-                    <img src="img/logo-footer.svg" alt="">
-                </a>
+                <?php $logo = get_field('footer_logo', 'options');
+
+                if($logo):?>
+
+                    <a href="<?= get_home_url();?>">
+                        <img src="<?= $logo['url'];?>" alt="<?= $logo['alt'];?>">
+                    </a>
+
+                <?php endif;?>
             </div>
             <div class="content p-0 d-grid">
                 <div class="item item-1">
