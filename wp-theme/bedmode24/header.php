@@ -513,9 +513,13 @@
         </div>
         <div class="wrap">
             <div class="logo-wrap">
-                <a href="index.html">
-                    <img src="img/logo.svg" alt="">
-                </a>
+                <?php if($logo):?>
+
+                    <a href="<?= get_home_url();?>">
+                        <img src="<?= $logo['url'];?>" alt="<?= $logo['alt'];?>">
+                    </a>
+
+                <?php endif;?>
             </div>
             <nav class="mob-menu-wrap">
                 <ul class="mob-menu p-0">
@@ -584,12 +588,8 @@
                     </li>
                 </ul>
             </nav>
-            <div class="search-wrap ">
-                <form action="#">
-                    <label for="search-mob"></label>
-                    <input type="search" name="search-mob" id="search-mob" placeholder="Zoek producten…">
-                    <button type="submit" class="btn d-flex align-items-center justify-content-center"><i class="far fa-search"></i></button>
-                </form>
+            <div class="search-wrap">
+                <?= do_shortcode('[fibosearch]'); ?>
             </div>
         </div>
     </div>

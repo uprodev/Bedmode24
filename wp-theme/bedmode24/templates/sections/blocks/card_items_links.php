@@ -6,7 +6,7 @@
 
 <section class="card-links">
     <div class="bg">
-        <img src="img/bg-0.png" alt="" class="bg">
+        <img src="<?= get_template_directory_uri();?>/img/bg-0.png" alt="" class="bg">
     </div>
     <div class="container">
         <div class="row">
