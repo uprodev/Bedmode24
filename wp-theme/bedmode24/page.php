@@ -1,19 +1,7 @@
-<?php 
+<?php
 
-get_header(); 
+get_header();
 
-?>
-
-
-<?php the_post();
-
-	the_content();
-
-?>
-
-
-<?php 
+get_template_part('templates/flexible');
 
 get_footer();
-
-?>

@@ -29,3 +29,11 @@ if( function_exists('acf_add_options_page') ) {
 
 	acf_add_options_sub_page('Theme Settings');
 }
+
+
+//add_action('wp_enqueue_scripts', 'wpcf7_recaptcha_no_refill', 15, 0);
+function wpcf7_recaptcha_no_refill() {
+    $service = WPCF7_RECAPTCHA::get_instance();
+    if ( ! $service->is_active() ) { return; }
+    wp_add_inline_script('contact-form-7', 'wpcf7.cached = 0;', 'before' );
+}
