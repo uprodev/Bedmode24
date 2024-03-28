@@ -4,6 +4,7 @@ $title = get_sub_field('title');
 $subtitle = get_sub_field('subtitle');
 $text= get_sub_field('text');
 $link = get_sub_field('link');
+$color = get_sub_field('color_button');
 $image = get_sub_field('image');
 $bg = get_sub_field('background');
 $width = get_sub_field('container_width');
@@ -40,7 +41,7 @@ $position = get_sub_field('image_position');
                         $link_target = $link['target'] ? $link['target'] : '_self';
                         ?>
                         <div class="btn-wrap">
-                            <a class="btn-default rounded-5" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
+                            <a class="<?= $color?'btn-blue btn-default btn-shadow ':'btn-default ';?>rounded-5" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
                         </div>
                     <?php endif; ?>
 
