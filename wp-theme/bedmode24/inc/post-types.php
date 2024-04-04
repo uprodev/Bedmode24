@@ -118,7 +118,7 @@ function cptui_register_my_cpts_landingspagina() {
         "map_meta_cap" => true,
         "hierarchical" => false,
         "can_export" => false,
-        "rewrite" => [ "slug" => "landingspagina", "with_front" => true ],
+        "rewrite" => true,
         "query_var" => true,
         "menu_icon" => "dashicons-format-aside",
         "supports" => [ "title", "editor", "thumbnail" ],
@@ -129,3 +129,4 @@ function cptui_register_my_cpts_landingspagina() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts_landingspagina' );
+

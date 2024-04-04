@@ -37,3 +37,23 @@ function wpcf7_recaptcha_no_refill() {
     if ( ! $service->is_active() ) { return; }
     wp_add_inline_script('contact-form-7', 'wpcf7.cached = 0;', 'before' );
 }
+
+
+/* change */
+
+function na_parse_request_trick($query) {
+
+    if (!$query->is_main_query())
+        return;
+
+
+    if (2 != count($query->query) || !isset($query->query['page'])) {
+        return;
+    }
+
+    if (!empty($query->query['name'])) {
+        $query->set('post_type', array('landingspagina'));
+    }
+}
+add_action('pre_get_posts', 'na_parse_request_trick');
+
