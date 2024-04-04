@@ -4,10 +4,11 @@ $title = get_sub_field('title');
 $subtitle = get_sub_field('subtitle');
 $items= get_sub_field('items');
 $link = get_sub_field('primary_button');
+$bg= get_sub_field('background');
 
 ?>
 
-<section class="item-4x">
+<section class="item-4x<?= $bg?' bg-light-grey':'';?>">
     <div class="container">
         <div class="row">
 
