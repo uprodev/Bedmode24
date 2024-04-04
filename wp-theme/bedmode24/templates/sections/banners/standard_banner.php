@@ -6,10 +6,11 @@ $text= get_sub_field('description');
 $link = get_sub_field('link');
 $image = get_sub_field('background_image');
 $image_mob = get_sub_field('mobile_background_image');
+$bg = get_sub_field('background_color');
 
 ?>
 
-<section class="page-title-bg">
+<section class="base-banner<?= $bg?' bg-grey':'';?>">
     <div class="bg">
         <?php if($image):?>
             <img src="<?= $image['url'];?>" alt="<?= $image['url'];?>" class="img">
@@ -20,7 +21,7 @@ $image_mob = get_sub_field('mobile_background_image');
     </div>
     <div class="container">
         <div class="row">
-            <div class="content p-0">
+            <div class="content ">
                 <?php if($subtitle):?>
                     <h6 class="sub-title"><?= $subtitle;?></h6>
                 <?php endif;?>
@@ -37,7 +38,7 @@ $image_mob = get_sub_field('mobile_background_image');
                     $link_target = $link['target'] ? $link['target'] : '_self';
                     ?>
                     <div class="btn-wrap">
-                        <a class="btn-default rounded-5 px-5" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
+                        <a class="btn-default rounded-5 px-5 btn-blue btn-shadow" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
                     </div>
                 <?php endif; ?>
 
