@@ -25,7 +25,7 @@ $quick_links = get_sub_field('quick_links');
         <div class="row justify-content-between">
             <div class="content p-0">
                 <?php if($subtitle):?>
-                    <h6 class="sub-title"><?= $subtitle;?></h6>
+                    <h6 class="subtitle"><?= $subtitle;?></h6>
                 <?php endif;?>
 
                 <?php if($title):?>

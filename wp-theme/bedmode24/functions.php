@@ -39,7 +39,16 @@ function wpcf7_recaptcha_no_refill() {
 }
 
 
-/* change */
+/* change landingspagina permalink*/
+
+function na_remove_slug_from_cpt($post_link, $post, $leavename) {
+    if ('landingspagina' != $post->post_type || 'publish' != $post->post_status) {
+        return $post_link;
+    }
+    $post_link = str_replace('/' . $post->post_type . '/', '/', $post_link);
+    return $post_link;
+}
+add_filter('post_type_link', 'na_remove_slug_from_cpt', 10, 3);
 
 function na_parse_request_trick($query) {
 
