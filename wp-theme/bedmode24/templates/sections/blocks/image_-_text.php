@@ -12,7 +12,7 @@ $position = get_sub_field('image_position');
 
 ?>
 
-<section class="img-text<?= $width?' small-block':'';?><?= $position?' img-text-revers':'';?><?= $bg=='grey'?'':' bg-light-grey';?>">
+<section class="img-text<?= $width?' small-block':'';?><?= $position?' img-text-revers':'';?><?= $bg?'':' bg-light-grey';?>">
     <div class="container">
         <div class="row">
             <div class="content d-flex justify-content-between flex-wrap align-items-center">
