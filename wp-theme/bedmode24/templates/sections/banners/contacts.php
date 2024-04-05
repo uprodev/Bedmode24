@@ -23,7 +23,7 @@ $form = get_sub_field('form');
         <div class="row">
             <div class="text-wrap col-md-6 col-12">
                 <?php if($subtitle):?>
-                    <h6 class="sub-title"><?= $subtitle;?></h6>
+                    <h6 class="subtitle"><?= $subtitle;?></h6>
                 <?php endif;?>
 
                 <?php if($title):?>

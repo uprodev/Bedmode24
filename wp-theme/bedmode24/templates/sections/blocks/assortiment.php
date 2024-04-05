@@ -17,84 +17,14 @@ $bgc = get_sub_field('background_color');
             <?php if($prods):?>
                 <div class="swiper slider-product col-12 slider-product-1">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide product-item">
-                            <span class="label">SALE</span>
-                            <figure>
-                                <a href="#">
-                                    <img src="img/img-4-1.png" alt="">
-                                    <span class="material">Materiaal</span>
-                                    <span class="new"><span>Nieuw</span></span>
-                                </a>
-                            </figure>
-                            <div class="text">
-                                <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                                <div class="on info"><span></span>Op voorraad</div>
-                                <p class="price">€134,95 – €259,95</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                                </div>
+                        <?php foreach( $prods as $post): setup_postdata($post); ?>
+
+                            <div class="swiper-slide product-item">
+                                <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
-                        </div>
-                        <div class="swiper-slide product-item">
-                            <figure>
-                                <a href="#">
-                                    <img src="img/img-4-2.png" alt="">
-                                </a>
-                            </figure>
-                            <div class="text">
-                                <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                                <div class="off info"><span></span>Op voorraad</div>
-                                <p class="price">€134,95 – €259,95</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide product-item">
-                            <figure>
-                                <a href="#">
-                                    <img src="img/img-4-3.png" alt="">
-                                </a>
-                            </figure>
-                            <div class="text">
-                                <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                                <div class="on info"><span></span>Op voorraad</div>
-                                <p class="price">€134,95 – €259,95</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide product-item">
-                            <figure>
-                                <a href="#">
-                                    <img src="img/img-4-4.png" alt="">
-                                </a>
-                            </figure>
-                            <div class="text">
-                                <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                                <div class="on info"><span></span>Op voorraad</div>
-                                <p class="price">€134,95 – €259,95</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide product-item">
-                            <figure>
-                                <a href="#">
-                                    <img src="img/img-4-4.png" alt="">
-                                </a>
-                            </figure>
-                            <div class="text">
-                                <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                                <div class="on info"><span></span>Op voorraad</div>
-                                <p class="price">€134,95 – €259,95</p>
-                                <div class="btn-wrap">
-                                    <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        <?php endforeach; wp_reset_postdata(); ?>
+
                     </div>
                     <div class="swiper-pagination product-pagination product-pagination-1"></div>
                 </div>

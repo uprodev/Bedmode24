@@ -106,13 +106,13 @@
                 </div>
                 <div class="icon-wrap p-0">
                     <ul class="d-flex justify-content-xxl-end justify-content-center">
-                        <li class="ideal"><a href="#"><img src="img/footer-1.png" alt=""></a></li>
-                        <li class="master"><a href="#"><img src="img/footer-2.png" alt=""></a></li>
-                        <li class="viza"><a href="#"><img src="img/footer-3.png" alt=""></a></li>
-                        <li class="pay"><a href="#"><img src="img/footer-4.png" alt=""></a></li>
-                        <li class="rive"><a href="#"><img src="img/footer-5.png" alt=""></a></li>
-                        <li class="in3"><a href="#"><img src="img/footer-6.png" alt=""></a></li>
-                        <li class="bill"><a href="#"><img src="img/footer-7.png" alt=""></a></li>
+                        <li class="ideal"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-1.png" alt=""></a></li>
+                        <li class="master"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-2.png" alt=""></a></li>
+                        <li class="viza"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-3.png" alt=""></a></li>
+                        <li class="pay"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-4.png" alt=""></a></li>
+                        <li class="rive"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-5.png" alt=""></a></li>
+                        <li class="in3"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-6.png" alt=""></a></li>
+                        <li class="bill"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-7.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>

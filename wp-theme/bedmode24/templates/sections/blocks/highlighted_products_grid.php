@@ -11,14 +11,11 @@ if($size){
     $num = 8;
 }
 
-if($default){
-    $prods = $custom;
-}else{
-    $prods = new WP_Query([
-       'post_type' => 'product',
-       'posts_per_page' => $num,
-    ]);
-}
+
+$prods = new WP_Query([
+    'post_type' => 'product',
+    'posts_per_page' => $num,
+]);
 
 ?>
 
@@ -28,136 +25,25 @@ if($default){
             <div class="content p-0 d-flex justify-content-between flex-wrap">
 
                 <div class="content-4x col-12 p-0 d-grid">
-                    <div class="product-item product-item-border ">
-                        <span class="label">SALE</span>
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                                <span class="material">Materiaal</span>
-                                <span class="new"><span>Nieuw</span></span>
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
+                    <?php if($default):
+                        foreach( $custom as $post): setup_postdata($post); ?>
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
+                            <div class="product-item product-item-border ">
+                                <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
+                        <?php endforeach; wp_reset_postdata();
+                    else:
+                        while($prods->have_posts()): $prods->the_post();?>
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
+                            <div class="product-item product-item-border ">
+                                <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
+                        <?php endwhile; wp_reset_postdata();
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border">
+                    endif;?>
 
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-item product-item-border ">
-
-                        <figure>
-                            <a href="#">
-                                <img src="img/img-8.jpg" alt="">
-                            </a>
-                        </figure>
-                        <div class="text">
-                            <p class="subtitle">Dekbedovertrekken</p>
-                            <h6 class="title"><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                            <p class="price">€134,95 – €259,95</p>
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
