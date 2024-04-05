@@ -4,7 +4,12 @@ $title = get_sub_field('title');
 $prods= get_sub_field('prods');
 $link = get_sub_field('link');
 $bgc = get_sub_field('background_color');
+$default = get_sub_field('default');
 
+$def = new WP_Query([
+    'post_type' => 'product',
+    'posts_per_page' => 6,
+]);
 ?>
 
 <section class="product-mini bg-<?= $bgc;?>">
@@ -14,22 +19,30 @@ $bgc = get_sub_field('background_color');
                 <h2 class="col-12 p-0"><?= $title;?></h2>
             <?php endif;?>
 
-            <?php if($prods):?>
-                <div class="swiper slider-product col-12 slider-product-1">
-                    <div class="swiper-wrapper">
-                        <?php foreach( $prods as $post): setup_postdata($post); ?>
+            <div class="swiper slider-product col-12 slider-product-1">
+                <div class="swiper-wrapper">
+                    <?php if($default):
+                        while($def->have_posts()): $def->the_post();?>
+
+                            <div class="swiper-slide product-item">
+                                <?php wc_get_template_part( 'content', 'product' );?>
+                            </div>
+
+                        <?php endwhile; wp_reset_postdata();
+
+                    else:
+
+                        foreach( $prods as $post): setup_postdata($post); ?>
 
                             <div class="swiper-slide product-item">
                                 <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
 
                         <?php endforeach; wp_reset_postdata(); ?>
-
-                    </div>
-                    <div class="swiper-pagination product-pagination product-pagination-1"></div>
+                    <?php endif;?>
                 </div>
-            <?php endif;?>
-
+                <div class="swiper-pagination product-pagination product-pagination-1"></div>
+            </div>
 
             <?php if( $link ):
                 $link_url = $link['url'];
