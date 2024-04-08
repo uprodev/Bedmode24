@@ -5,10 +5,11 @@ $subtitle = get_sub_field('subtitle');
 $text = get_sub_field('text');
 $link = get_sub_field('link');
 $col = get_sub_field('columns');
+$bg = get_sub_field('background');
 
 ?>
 
-<section class="text-section<?= $col?' text-section-2':'';?> bg-light-grey">
+<section class="text-section<?= $col?' text-section-2':'';?><?= $bg?' bg-light-grey':''?>">
     <div class="container">
         <div class="row">
             <div class="content">
