@@ -5,6 +5,7 @@ $text2= get_sub_field('text_2');
 $image= get_sub_field('image');
 $quote__title= get_sub_field('quote__title');
 $contact_info= get_sub_field('contact_info');
+
 ?>
 
 <section class="text-default ">
@@ -28,13 +29,31 @@ $contact_info= get_sub_field('contact_info');
                     <?= $quote__title;?>
 
                     <div class="user-block d-flex justify-content-between flex-wrap">
-                        <div class="icon-user">
-                            <img src="img/icon-user.svg" alt="">
-                        </div>
+                        <?php if($contact_info['image']):?>
+                            <div class="icon-user">
+                                <img src="<?= $contact_info['image']['url'];?>" alt="<?= $contact_info['image']['alt'];?>">
+                            </div>
+                        <?php endif;?>
                         <div class="user-info">
-                            <h6 class="user-title">Neem contact op</h6>
-                            <p><a href="tel:+0401234567"><i class="fal fa-phone-alt"></i>040 - 123 45 67</a></p>
-                            <p><a href="mailto:naam@bedrijfsnaam.nl"><i class="fal fa-envelope"></i>naam@bedrijfsnaam.nl</a></p>
+                            <?php if($contact_info['title']):?>
+                                <h6 class="user-title"><?= $contact_info['title'];?></h6>
+                            <?php endif;?>
+
+                            <?php if($contact_info['links']):
+                                foreach($contact_info['links'] as $ci):
+                                    $link = $ci['link'];
+
+                                    if( $link ):
+                                        $link_url = $link['url'];
+                                        $link_title = $link['title'];
+                                        $link_target = $link['target'] ? $link['target'] : '_self';
+                                        ?>
+                                        <p><a class="" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><i class="<?= $ci['fa_icon'];?>"></i><?= esc_html($link_title); ?></a></p>
+                                    <?php endif; ?>
+
+                                <?php endforeach;
+                            endif;?>
+
                         </div>
                     </div>
                 </div>
