@@ -28,13 +28,12 @@ function add_scripts() {
     wp_enqueue_script( 'maskjs', get_template_directory_uri() . '/js/jquery.mask.js', array('jquery'), false, true);
     wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/js/swiper.js', array('jquery'), false, true);
     wp_enqueue_script( 'script', get_template_directory_uri() . '/js/script.js', array('jquery'), rand(1111, 9999), true);
+    wp_enqueue_script( 'action', get_template_directory_uri() . '/js/action.js', array('jquery'), rand(1111, 9999), true);
 
-    wp_localize_script('main', 'globals',
+    wp_localize_script('action', 'globals',
         array(
             'url' => admin_url('admin-ajax.php'),
             'template' => get_template_directory_uri(),
-            'upload'=>admin_url( 'admin-ajax.php?action=handle_dropped_media' ),
-            'delete'=>admin_url( 'admin-ajax.php?action=handle_deleted_media' ),
         )
     );
 
