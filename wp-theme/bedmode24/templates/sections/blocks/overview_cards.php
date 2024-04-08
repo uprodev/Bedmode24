@@ -3,12 +3,15 @@
 $default = get_sub_field('custom_or_default_cards');
 $cards = get_sub_field('card_items');
 $link_text = get_sub_field('load_more_button_text');
-
+$title = get_sub_field('title');
 ?>
 
 <section class="card-3x pb-8">
     <div class="container">
         <div class="row">
+            <?php if($title):?>
+                <h2 class="p-0 text-center mb-4"><?= $title;?></h2>
+            <?php endif;?>
             <div class="content p-0 d-grid">
                 <?php if($default):
                     if($cards):
