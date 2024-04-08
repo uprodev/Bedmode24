@@ -37,7 +37,7 @@ $col = get_sub_field('columns');
                 <?php endif; ?>
 
             </div>
-            
+
         </div>
     </div>
 </section>
