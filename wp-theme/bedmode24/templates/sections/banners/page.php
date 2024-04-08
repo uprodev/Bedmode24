@@ -22,7 +22,7 @@ $image_mob = get_sub_field('mobile_background_image');
         <div class="row">
             <div class="content p-0">
                 <?php if($subtitle):?>
-                    <h6 class="sub-title"><?= $subtitle;?></h6>
+                    <h6 class="subtitle"><?= $subtitle;?></h6>
                 <?php endif;?>
 
                 <?php if($title):?>
