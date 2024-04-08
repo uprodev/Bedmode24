@@ -63,7 +63,7 @@ $merks = get_sub_field('product_eigenschappen_selector');
                                     <?php wc_get_template_part( 'content', 'product' );?>
                                 </div>
 
-                            <?php endwhile; wp_reset_postdata();
+                            <?php endwhile; wp_reset_query();
 
                         else:
 
@@ -75,7 +75,7 @@ $merks = get_sub_field('product_eigenschappen_selector');
                                         <?php wc_get_template_part( 'content', 'product' );?>
                                     </div>
 
-                               <?php  endforeach;  wp_reset_postdata();
+                               <?php  endforeach;  wp_reset_query();
 
                             endif;
 
