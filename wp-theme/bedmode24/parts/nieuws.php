@@ -1,6 +1,7 @@
 <?php
 
 $cat = get_the_terms(get_the_ID(), 'nieuws_category');
+$img = get_field('placeholder', 'options');
 
 ?>
 
@@ -12,7 +13,7 @@ $cat = get_the_terms(get_the_ID(), 'nieuws_category');
     </div>
     <figure>
         <a href="<?php the_permalink();?>">
-            <img src="<?php the_post_thumbnail_url();?>" alt="<?= strip_tags(get_the_title());?>">
+            <img src="<?= has_post_thumbnail()?the_post_thumbnail_url():$img;?>" alt="<?= strip_tags(get_the_title());?>">
             <div class="arrow-wrap">
                 <span><i class="fal fa-long-arrow-right"></i></span>
             </div>
