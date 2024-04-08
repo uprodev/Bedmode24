@@ -19,6 +19,7 @@ $ids = get_the_ID();
                     <div class="swiper-wrapper">
 
                         <?php if($default):
+                           
                             $ken = new WP_Query([
                                'post_type' => 'nieuws',
                                 'posts_per_page' => 3,
