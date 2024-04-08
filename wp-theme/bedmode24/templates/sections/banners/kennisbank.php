@@ -6,7 +6,9 @@ $text= get_sub_field('description');
 $link = get_sub_field('link');
 $image = get_sub_field('background_image');
 $image_mob = get_sub_field('mobile_background_image');
-
+$pl1 = get_sub_field('placeholder_option_1');
+$pl2 = get_sub_field('placeholder_option_2');
+$cats = get_terms(['taxonomy' => 'nieuws_category', 'hide_empty' => false,]);
 ?>
 
 <section class="page-title-bg base-filter">
@@ -50,17 +52,17 @@ $image_mob = get_sub_field('mobile_background_image');
                     <div class="filter-content d-flex justify-content-between flex-wrap">
                         <div class="select-block input-wrap select-block-1">
                             <label class="form-label" for="select-1"></label>
-                            <select id="select-1">
-                                <option value="0" disabled selected>Productiecategorie</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            <select id="select-1" name="categorien">
+                                <option value="" disabled selected><?= $pl1?$pl1:'Productiecategorie';?></option>
+                                <?php foreach($cats as $ct):?>
+                                    <option value="<?= $ct->term_id;?>"><?= $ct->name;?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="select-block input-wrap select-block-2">
                             <label class="form-label" for="select-2"></label>
-                            <select id="select-2">
-                                <option value="0" disabled selected>Soort [Bijv. Inspiratie of blog]</option>
+                            <select id="select-2" name="soort">
+                                <option value="0" disabled selected><?= $pl2?$pl2:'Soort [Bijv. Inspiratie of blog]';?></option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -68,7 +70,7 @@ $image_mob = get_sub_field('mobile_background_image');
                         </div>
                         <div class="input-wrap">
                             <label for="search-base"></label>
-                            <input type="search" id="search-base" name="search-base" placeholder="Zoekwoord…">
+                            <input type="search" id="search" name="s" placeholder="Zoekwoord…">
                         </div>
                         <div class="input-wrap-submit">
                             <button type="submit" class="btn-default rounded-5 btn-white"><i class="fal fa-arrow-right"></i></button>

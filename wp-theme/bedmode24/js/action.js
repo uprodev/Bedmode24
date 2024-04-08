@@ -22,7 +22,7 @@ $(document).on('click', '#aload', function(e){
                 that.parent().remove();
             }
 
-            $('.content').append(data);
+            $('.content-ajax').append(data);
 
         }
     });
