@@ -29,7 +29,7 @@ global $product;?>
             '<a href="%s" data-quantity="%s" class="%s" %s>Bekijken</a>',
             esc_url( $product->add_to_cart_url() ),
             esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-            esc_attr( isset( $args['class'] ) ? $args['class'].' btn-default rounded-5 btn-shadow' : 'btn-default rounded-5 btn-shadow' ),
+            esc_attr( isset( $args['class'] ) ? str_replace('button', '', $args['class']).' btn-default rounded-5 btn-shadow' : 'btn-default rounded-5 btn-shadow' ),
             isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : ''
         ),
         $product,

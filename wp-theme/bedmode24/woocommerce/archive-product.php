@@ -54,21 +54,15 @@ get_header();
                                 <a href="#"><i class="fal fa-filter"></i> Filter</a>
                             </div>
                             <div class="filter-select d-flex flex-wrap">
-                                <p>15 producten gevonden</p>
+                                <?php woocommerce_result_count();?>
 <!--                                <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>1 persoons</p>-->
 <!--                                <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>Patroon</p>-->
 <!--                                <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>Filters resetten</p>-->
                                 <?= do_shortcode('[br_filters_group group_id=428]');?>
                             </div>
-                            <div class="select-block ">
-                                <label class="form-label" for="select"></label>
-                                <select id="select">
-                                    <option value="0" selected disabled>Sorteren...</option>
-                                    <option value="1">Populariteit</option>
-                                    <option value="2">Prijs (oplopend) </option>
-                                    <option value="3">Prijs (aflopend)</option>
-                                </select>
-                            </div>
+
+                            <?php woocommerce_catalog_ordering();?>
+
                         </div>
                         <div class="sorted-content d-flex flex-wrap">
 
@@ -169,14 +163,6 @@ get_header();
 <?php
 if ( woocommerce_product_loop() ) {
 
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	do_action( 'woocommerce_before_shop_loop' );
 
 	woocommerce_product_loop_start();
 
