@@ -64,30 +64,29 @@ get_header();
                             <?php woocommerce_catalog_ordering();?>
 
                         </div>
-                        <div class="sorted-content d-flex flex-wrap">
+                        <?php if ( woocommerce_product_loop() ) :?>
+                            <div class="sorted-content d-flex flex-wrap">
 
-                            <?php if ( wc_get_loop_prop( 'total' ) ) {
-                                while ( have_posts() ) { the_post();
-                                    do_action( 'woocommerce_shop_loop' );?>
+                                <?php if ( wc_get_loop_prop( 'total' ) ) {
+                                    while ( have_posts() ) { the_post();
+                                        do_action( 'woocommerce_shop_loop' );?>
 
-                                    <div class="product-item product-item-border ">
-                                        <?php wc_get_template_part( 'content', 'product' );?>
-                                    </div>
-                                <?php }
-                            }?>
+                                        <div class="product-item product-item-border ">
+                                            <?php wc_get_template_part( 'content', 'product' );?>
+                                        </div>
+                                    <?php }
+                                }?>
 
 
-                        </div>
-                        <div class="pagination-wrap">
-                            <ul class="pagination d-flex">
-                                <li><a href="#"><i class="far fa-chevron-left"></i></a></li>
-                                <li><span>1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="far fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
+                            </div>
+
+                            <?php do_action( 'woocommerce_after_shop_loop' );?>
+
+                        <?php else:
+
+                            do_action( 'woocommerce_no_products_found' );
+
+                        endif;?>
                     </div>
                 </div>
             </div>
@@ -147,67 +146,5 @@ get_header();
             </div>
         </div>
     </section>
-<header class="woocommerce-products-header">
 
-
-	<?php
-	/**
-	 * Hook: woocommerce_archive_description.
-	 *
-	 * @hooked woocommerce_taxonomy_archive_description - 10
-	 * @hooked woocommerce_product_archive_description - 10
-	 */
-	do_action( 'woocommerce_archive_description' );
-	?>
-</header>
-<?php
-if ( woocommerce_product_loop() ) {
-
-
-	woocommerce_product_loop_start();
-
-	if ( wc_get_loop_prop( 'total' ) ) {
-		while ( have_posts() ) {
-			the_post();
-
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 */
-			do_action( 'woocommerce_shop_loop' );
-
-			wc_get_template_part( 'content', 'product' );
-		}
-	}
-
-	woocommerce_product_loop_end();
-
-	/**
-	 * Hook: woocommerce_after_shop_loop.
-	 *
-	 * @hooked woocommerce_pagination - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop' );
-} else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-	do_action( 'woocommerce_no_products_found' );
-}
-
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-do_action( 'woocommerce_after_main_content' );
-
-/**
- * Hook: woocommerce_sidebar.
- *
- * @hooked woocommerce_get_sidebar - 10
- */
-do_action( 'woocommerce_sidebar' );
-
-get_footer( 'shop' );
+<?php get_footer();

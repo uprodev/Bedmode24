@@ -28,24 +28,29 @@ if ( $total <= 1 ) {
 	return;
 }
 ?>
-<nav class="woocommerce-pagination">
-	<?php
-	echo paginate_links(
-		apply_filters(
-			'woocommerce_pagination_args',
-			array( // WPCS: XSS ok.
-				'base'      => $base,
-				'format'    => $format,
-				'add_args'  => false,
-				'current'   => max( 1, $current ),
-				'total'     => $total,
-				'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
-				'next_text' => is_rtl() ? '&larr;' : '&rarr;',
-				'type'      => 'list',
-				'end_size'  => 3,
-				'mid_size'  => 3,
-			)
-		)
-	);
-	?>
-</nav>
+<div class="pagination-wrap woocommerce-pagination">
+    <ul class="pagination d-flex">
+        <?= paginate_links(
+            apply_filters(
+                'woocommerce_pagination_args',
+                array( // WPCS: XSS ok.
+                    'base'      => $base,
+                    'format'    => $format,
+                    'add_args'  => false,
+                    'current'   => max( 1, $current ),
+                    'total'     => $total,
+                    'prev_text' => is_rtl() ? '<i class="far fa-chevron-left"></i>' : '<i class="far fa-chevron-right"></i>',
+                    'next_text' => is_rtl() ? '<i class="far fa-chevron-right"></i>' : '<i class="far fa-chevron-left"></i>',
+                    'type'      => 'list',
+                    'end_size'  => 3,
+                    'mid_size'  => 3,
+                )
+            )
+        );
+        ?>
+
+    </ul>
+</div>
+
+
+
