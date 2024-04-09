@@ -93,6 +93,8 @@ $attributes = $product->get_attributes();
                 <?php if ($product->is_type('variable')){
                    if($default_variation && $default_variation->get_price_html()){
                        echo $default_variation->get_price_html();
+                   }else{
+                       echo $product->get_price_html();
                    }
 
                 }elseif($product->is_type('simple')) {
