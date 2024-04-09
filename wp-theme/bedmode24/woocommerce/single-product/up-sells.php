@@ -21,32 +21,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $upsells ) : ?>
 
-	<section class="up-sells upsells products">
-		<?php
-		$heading = apply_filters( 'woocommerce_product_upsells_products_heading', __( 'You may also like&hellip;', 'woocommerce' ) );
+    <section class="other-product">
+        <div class="container">
+            <div class="row">
+                <h2 class="title-section">Andere suggesties…</h2>
+                <div class="content p-0 ">
+                    <div class="swiper slider-product col-12 slider-product-1">
+                        <div class="swiper-wrapper">
+                            <?php foreach ( $upsells as $upsell ) : ?>
 
-		if ( $heading ) :
-			?>
-			<h2><?php echo esc_html( $heading ); ?></h2>
-		<?php endif; ?>
+                                <?php
+                                $post_object = get_post( $upsell->get_id() );
 
-		<?php woocommerce_product_loop_start(); ?>
+                                setup_postdata( $GLOBALS['post'] =& $post_object );?>
 
-			<?php foreach ( $upsells as $upsell ) : ?>
+                                <div class="product-item product-item-border swiper-slide">
+                                    <?php wc_get_template_part( 'content', 'product' );?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="swiper-pagination product-pagination product-pagination-1"></div>
+                    </div>
 
-				<?php
-				$post_object = get_post( $upsell->get_id() );
-
-				setup_postdata( $GLOBALS['post'] =& $post_object ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, Squiz.PHP.DisallowMultipleAssignments.Found
-
-				wc_get_template_part( 'content', 'product' );
-				?>
-
-			<?php endforeach; ?>
-
-		<?php woocommerce_product_loop_end(); ?>
-
-	</section>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<?php
 endif;
