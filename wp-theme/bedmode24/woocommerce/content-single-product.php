@@ -31,22 +31,51 @@ if ( post_password_required() ) {
 	return;
 }
 
+$show_sale = get_field('show_sale_label');
+$sale = get_field('sale_label');
+
 $cat = get_the_terms(get_the_ID(), 'product_cat');
+
+$description = $product->get_description();
+
+if ($product->is_type( 'variable' )) {
+    $variations = ($product->get_available_variations());
+    $default_attributes = $product->get_default_attributes();
+    $variations_attr = ($product->get_variation_attributes());
+
+    foreach($product->get_available_variations() as $variation_values ){
+        foreach($variation_values['attributes'] as $key => $attribute_value ){
+            $attribute_name = str_replace( 'attribute_', '', $key );
+            $default_value = $product->get_variation_default_attribute($attribute_name);
+            if( $default_value == $attribute_value ){
+                $is_default_variation = true;
+            } else {
+                $is_default_variation = false;
+                break;
+            }
+        }
+        if( $is_default_variation ){
+            $variation_id = $variation_values['variation_id'];
+            break;
+        }
+    }
+    if( $is_default_variation ){
+        $default_variation = wc_get_product($variation_id);
+        $price = $default_variation->get_price();
+    }
+}
+
 ?>
 <section class="product-inner bg-light-grey">
     <div class="container">
         <div class="row justify-content-between">
             <div class="slider-wrap col-xl-5 col-12 col-lg-6">
 
-                <?php
-                /**
-                 * Hook: woocommerce_before_single_product_summary.
-                 *
-                 * @hooked woocommerce_show_product_sale_flash - 10
-                 * @hooked woocommerce_show_product_images - 20
-                 */
-                do_action( 'woocommerce_before_single_product_summary' );
-                ?>
+                <?php if($show_sale):?>
+                    <div class="label"><?= $sale;?></div>
+                <?php endif;?>
+
+                <?php  woocommerce_show_product_images();?>
 
             </div>
 
@@ -58,7 +87,18 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
 
                 <?php woocommerce_template_single_title();?>
 
-                <p class="price"><?= $product->get_price_html();?></p>
+                <p class="price">
+                <?php if ($product->is_type('variable')){
+                   if($default_variation && $default_variation->get_price_html()){
+                       echo $default_variation->get_price_html();
+                   }
+
+                }elseif($product->is_type('simple')) {
+
+                    $product->get_price_html();
+
+                }?>
+               </p>
 
                 <?php woocommerce_template_single_add_to_cart();?>
 
@@ -78,16 +118,21 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
 
             <div class="tabs">
                 <ul class="tabs-menu">
-                    <li><span data-title="Beschrijving">Beschrijving</span></li>
+                    <?= $description?'<li><span data-title="Beschrijving">Beschrijving</span></li>':'';?>
+
                     <li><span data-title="Extra informatie">Extra informatie</span></li>
 
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-item">
 
-                        <?= $product->get_description();?>
+                    <?php if($description):?>
+                        <div class="tab-item">
 
-                    </div>
+                            <?= $product->get_description();?>
+
+                        </div>
+                    <?php endif;?>
+
                     <div class="tab-item">
                         <div class="tab-table">
                             <div class="tab-row">

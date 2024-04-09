@@ -23,20 +23,30 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+$show_sale = get_field('show_sale_label');
+$sale = get_field('sale_label');
+$show_new = get_field('show_new_label');
+$new = get_field('new_label');
+$show_material = get_field('show_material_label');
+$material = get_field('materiaal');
 
 $cat = get_the_terms(get_the_ID(), 'product_cat');
 
-if($product->is_on_sale()):?>
-
-    <span class="label">SALE</span>
-
+if($show_sale):?>
+    <span class="label"><?= $sale;?></span>
 <?php endif;?>
 
 <figure>
     <a href="<?php the_permalink();?>">
         <?php woocommerce_template_loop_product_thumbnail();?>
-<!--        <span class="material">Materiaal</span>-->
-<!--        <span class="new"><span>Nieuw</span></span>-->
+
+        <?php if($show_material):?>
+            <span class="material"><?= $material;?></span>
+        <?php endif;?>
+        <?php if($show_new):?>
+            <span class="new"><span><?= $new;?></span></span>
+        <?php endif;?>
+
     </a>
 </figure>
 <div class="text">
@@ -46,7 +56,7 @@ if($product->is_on_sale()):?>
     <h6 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h6>
     <div class="<?= $product->is_in_stock()?'on':'off';?> info"><span></span>Op voorraad</div>
     <p class="price"><?php woocommerce_template_loop_price();?></p>
-    <div class="btn-wrap">
-        <a href="<?php the_permalink();?>" class="btn-default rounded-5 btn-shadow">Bekijken</a>
-    </div>
+
+    <?php woocommerce_template_loop_add_to_cart();?>
+
 </div>
