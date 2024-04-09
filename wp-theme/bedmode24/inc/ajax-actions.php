@@ -2,6 +2,7 @@
 
 $actions = [
     'load_more',
+    'add_to_cart',
 ];
 
 foreach($actions as $action){
@@ -30,5 +31,24 @@ function load_more(){
     wp_reset_postdata();
 
     die();
+
+}
+
+
+/**
+ * add_to_cart
+ */
+
+
+function add_to_cart() {
+    $product_id = (int)$_GET['product_id'];
+    $variation_id = (int)$_GET['variation_id'];
+    $qty = (int)$_GET['qty']??1;
+
+
+    $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
+
+    wp_die();
+
 
 }

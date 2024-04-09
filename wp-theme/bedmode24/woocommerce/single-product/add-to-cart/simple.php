@@ -51,7 +51,7 @@ if ( $product->is_in_stock() ) : ?>
 		    <button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button btn-blue btn-default rounded-5">Toevoegen aan winkelwagen</button>
         </div>
 
-
+        <input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>

@@ -20,6 +20,8 @@ function add_styles() {
 
 function add_scripts() {
 
+    wp_enqueue_script( 'wc-cart-fragments' );
+
     wp_enqueue_script( 'fancyboxjs', get_template_directory_uri() . '/js/jquery.fancybox.min.js', array('jquery'), false, true);
     wp_enqueue_script( 'stickyjs', get_template_directory_uri() . '/js/jquery.sticky.js', array('jquery'), false, true);
     wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), false, true);
