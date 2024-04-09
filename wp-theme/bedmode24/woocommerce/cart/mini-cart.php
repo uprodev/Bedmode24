@@ -52,9 +52,9 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                         <h6> <a href="<?php echo esc_url( $product_permalink ); ?>">
                                 <?php echo wp_kses_post( $product_name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             </a></h6>
-                        <div class="input-number ">
+                        <div class="input-number">
                             <div class="btn-count btn-count-minus"><i class="fal fa-minus"></i></div>
-                            <input type="text" name="count" value="1" class="form-control"/>
+                            <input type="text" name="count" value="1" class="form-control qty-item" data-key="<?= esc_attr( $cart_item_key );?>"/>
                             <div class="btn-count btn-count-plus"><i class="fal fa-plus"></i></div>
                         </div>
                         <div class="cost">

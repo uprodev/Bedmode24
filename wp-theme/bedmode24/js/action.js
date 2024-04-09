@@ -1,5 +1,43 @@
 jQuery(document).ready(function ($) {
 
+    $(document).on('click', '.btn-count-plus', function(){
+        var e = $(this).parent().find("input.qty-item");
+        return e.val(parseInt(e.val()) + 1), e.change(), !1
+    });
+
+    $(document).on('click', '.btn-count-minus', function(){
+        var e = $(this).parent().find("input.qty-item"),
+            t = parseInt(e.val()) - 1;
+        return t = t < 1 ? 1 : t, e.val(t), e.change(), !1
+    });
+
+    $(document).on('change', '.qty-item', function(){
+        var that = $(this);
+
+
+            let item_quantity = $(this).val();
+
+            let key = $(this).attr('data-key');
+
+            var currentVal = parseFloat(item_quantity);
+
+            $.ajax({
+                type: 'GET',
+                url: wc_add_to_cart_params.ajax_url,
+                data: {
+                    action: 'qty_cart',
+                    hash: key,
+                    quantity: currentVal,
+                },
+                success: function (data) {
+                    $(document.body).trigger('wc_update_cart');
+                    $(document.body).trigger('update_checkout');
+                    $( document.body ).trigger( 'wc_fragment_refresh' );
+                },
+            });
+
+    })
+
     /**
      * add_to_cart
      */
