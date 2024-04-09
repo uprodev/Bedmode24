@@ -17,20 +17,25 @@
 
 defined( 'ABSPATH' ) || exit;
 
-/**
- * My Account navigation.
- *
- * @since 2.6.0
- */
-do_action( 'woocommerce_account_navigation' ); ?>
+?>
 
-<div class="woocommerce-MyAccount-content">
-	<?php
-		/**
-		 * My Account content.
-		 *
-		 * @since 2.6.0
-		 */
-		do_action( 'woocommerce_account_content' );
-	?>
-</div>
+<section class="cart-block bg-light-grey account">
+    <div class="container">
+        <div class="row">
+            <h1 class="p-0"><?php the_title();?></h1>
+            <div class="content p-0">
+
+                <?php
+
+                    do_action( 'woocommerce_account_navigation' );
+
+                    do_action( 'woocommerce_account_content' );
+
+                ?>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+

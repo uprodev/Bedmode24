@@ -76,7 +76,7 @@
                                     </a>
                                 </div>
                                 <div class="item item-account">
-                                    <a href="#">
+                                    <a href="<?= get_permalink(get_option( 'woocommerce_myaccount_page_id' ));?>">
                                         <i class="fal fa-user"></i>
                                         Account
                                     </a>
