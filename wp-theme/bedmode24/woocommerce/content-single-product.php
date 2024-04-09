@@ -65,6 +65,8 @@ if ($product->is_type( 'variable' )) {
     }
 }
 
+$attributes = $product->get_attributes();
+
 ?>
 <section class="product-inner bg-light-grey">
     <div class="container">
@@ -120,7 +122,7 @@ if ($product->is_type( 'variable' )) {
                 <ul class="tabs-menu">
                     <?= $description?'<li><span data-title="Beschrijving">Beschrijving</span></li>':'';?>
 
-                    <li><span data-title="Extra informatie">Extra informatie</span></li>
+                    <?= $attributes?'<li><span data-title="Extra informatie">Extra informatie</span></li>':'';?>
 
                 </ul>
                 <div class="tab-content">
@@ -133,44 +135,37 @@ if ($product->is_type( 'variable' )) {
                         </div>
                     <?php endif;?>
 
-                    <div class="tab-item">
-                        <div class="tab-table">
-                            <div class="tab-row">
-                                <div class="data data-1">
-                                    <p>Lorem</p>
-                                </div>
-                                <div class="data data-2">
-                                    <p>Lorem</p>
-                                </div>
-                            </div>
-                            <div class="tab-row">
-                                <div class="data data-1">
-                                    <p>Lorem</p>
-                                </div>
-                                <div class="data data-2">
-                                    <p>Lorem</p>
-                                </div>
-                            </div>
-                            <div class="tab-row">
-                                <div class="data data-1">
-                                    <p>Lorem</p>
-                                </div>
-                                <div class="data data-2">
-                                    <p>Lorem</p>
-                                </div>
-                            </div>
-                            <div class="tab-row">
-                                <div class="data data-1">
-                                    <p>Lorem</p>
-                                </div>
-                                <div class="data data-2">
-                                    <p>Lorem</p>
-                                    <p>Lorem</p>
-                                </div>
+                    <?php if($attributes):?>
+                        <div class="tab-item">
+                            <div class="tab-table">
+
+                                <?php foreach ( $attributes as $attribute ) :
+
+                                    if ( empty( $attribute['is_visible'] ) || ( $attribute['is_taxonomy'] && ! taxonomy_exists( $attribute['name'] ) ) )
+                                        continue;
+
+                                    $values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
+
+                                    if( empty( $values ) )
+                                        continue;
+                                    ?>
+
+                                    <div class="tab-row">
+                                        <div class="data data-1">
+                                            <p><?php echo wc_attribute_label( $attribute['name'] ); ?></p>
+                                        </div>
+                                        <div class="data data-2">
+                                            <?php foreach($values as $val):
+                                                echo '<p>'.$val.'</p>';
+                                            endforeach;
+                                            ?>
+                                        </div>
+                                    </div>
+
+                                <?php endforeach;?>
                             </div>
                         </div>
-                    </div>
-
+                    <?php endif;?>
                 </div>
             </div>
         </div>
