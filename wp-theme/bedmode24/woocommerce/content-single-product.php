@@ -55,7 +55,8 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
                     <h6 class="subtitle"><?= $cat[0]->name;?></h6>
                 <?php endif;?>
                 <?php woocommerce_template_single_title();?>
-                <p class="price"><?php woocommerce_template_single_price();?></p>
+                <p class="price"><?= $product->get_price_html();?></p>
+
                 <div class="wrap-form">
                     <div class="select-block">
                         <label class="form-label" for="lang">Uitvoering</label>
@@ -75,13 +76,9 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
                     <li class="li-info "><span></span> Op voorraad</li>
                     <li class="cost d-flex align-items-start">
                         <?php woocommerce_template_single_price();?>
-                        <p class="old">€49,95</p>
-                        <p class="new">€39,95</p>
                     </li>
                 </ul>
-                <div class="btn-wrap">
-                    <a href="#" class="btn-blue btn-default rounded-5">Toevoegen aan winkelwagen</a>
-                </div>
+                <?php woocommerce_template_single_add_to_cart();?>
 
                 <?php woocommerce_template_single_excerpt();?>
 
@@ -157,27 +154,6 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
         </div>
     </div>
 </section>
-<div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
-
-
-
-	<div class="summary entry-summary">
-		<?php
-		/**
-		 * Hook: woocommerce_single_product_summary.
-		 *
-		 * @hooked woocommerce_template_single_title - 5
-		 * @hooked woocommerce_template_single_rating - 10
-		 * @hooked woocommerce_template_single_price - 10
-		 * @hooked woocommerce_template_single_excerpt - 20
-		 * @hooked woocommerce_template_single_add_to_cart - 30
-		 * @hooked woocommerce_template_single_meta - 40
-		 * @hooked woocommerce_template_single_sharing - 50
-		 * @hooked WC_Structured_Data::generate_product_data() - 60
-		 */
-		do_action( 'woocommerce_single_product_summary' );
-		?>
-	</div>
 
 	<?php
 	/**
@@ -187,8 +163,6 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
 	 * @hooked woocommerce_upsell_display - 15
 	 * @hooked woocommerce_output_related_products - 20
 	 */
-	do_action( 'woocommerce_after_single_product_summary' );
-	?>
-</div>
 
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+	?>
+
