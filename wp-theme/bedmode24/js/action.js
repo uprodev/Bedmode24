@@ -1,19 +1,17 @@
 jQuery(document).ready(function ($) {
 
     $(document).on('click', '.btn-count-plus', function(){
-        var e = $(this).parent().find("input.qty-item");
+        var e = $(this).parent().find("input.qty");
         return e.val(parseInt(e.val()) + 1), e.change(), !1
     });
 
     $(document).on('click', '.btn-count-minus', function(){
-        var e = $(this).parent().find("input.qty-item"),
+        var e = $(this).parent().find("input.qty"),
             t = parseInt(e.val()) - 1;
         return t = t < 1 ? 1 : t, e.val(t), e.change(), !1
     });
 
-    $(document).on('change', '.qty-item', function(){
-        var that = $(this);
-
+    $(document).on('change', '.qty', function(){
 
             let item_quantity = $(this).val();
 
