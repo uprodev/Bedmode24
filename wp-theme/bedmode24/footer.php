@@ -126,69 +126,7 @@
             <a href="#"><i class="fal fa-times"></i></a>
         </div>
     </div>
-    <div class="wrap">
-        <div class="item ">
-            <figure>
-                <a href="#"><img src="img/img-1.png" alt=""></a>
-            </figure>
-            <div class="text">
-                <h6><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                <div class="input-number ">
-                    <div class="btn-count btn-count-minus"><i class="fal fa-minus"></i></div>
-                    <input type="text" name="count" value="1" class="form-control"/>
-                    <div class="btn-count btn-count-plus"><i class="fal fa-plus"></i></div>
-                </div>
-                <div class="cost">
-                    <p>$100</p>
-                </div>
-                <div class="delete-cart-item">
-                    <a href="#"><i class="fal fa-times-circle"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item ">
-            <figure>
-                <a href="#"><img src="img/img-1.png" alt=""></a>
-            </figure>
-            <div class="text">
-                <h6><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                <div class="input-number ">
-                    <div class="btn-count btn-count-minus"><i class="fal fa-minus"></i></div>
-                    <input type="text" name="count" value="1" class="form-control"/>
-                    <div class="btn-count btn-count-plus"><i class="fal fa-plus"></i></div>
-                </div>
-                <div class="cost">
-                    <p>$100</p>
-                </div>
-                <div class="delete-cart-item">
-                    <a href="#"><i class="fal fa-times-circle"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="item ">
-            <figure>
-                <a href="#"><img src="img/img-1.png" alt=""></a>
-            </figure>
-            <div class="text">
-                <h6><a href="#">Dekbed 90% Dons Enkel</a></h6>
-                <div class="input-number ">
-                    <div class="btn-count btn-count-minus"><i class="fal fa-minus"></i></div>
-                    <input type="text" name="count" value="1" class="form-control"/>
-                    <div class="btn-count btn-count-plus"><i class="fal fa-plus"></i></div>
-                </div>
-                <div class="cost">
-                    <p>$100</p>
-                </div>
-                <div class="delete-cart-item">
-                    <a href="#"><i class="fal fa-times-circle"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="btn-wrap">
-            <a href="#" class="btn-default">Bekijk winkelwagen</a>
-            <a href="#" class="btn-default">Afrekenen</a>
-        </div>
-    </div>
+    <?php wc_get_template_part( 'cart/mini-cart' );?>
 </div>
 
   <?php wp_footer(); ?>

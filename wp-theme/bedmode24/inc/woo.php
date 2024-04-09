@@ -1,5 +1,7 @@
 <?php
 
+/* sort */
+
 add_filter('woocommerce_catalog_orderby', function($order) {
     unset($order['menu_order']);
     unset($order['rating']);
@@ -11,5 +13,18 @@ add_filter('woocommerce_catalog_orderby', function($order) {
     return $order;
 
 });
+
+/* fragments */
+
+function add_points_widget_to_fragment( $fragments ) {
+
+    ob_start();
+    woocommerce_mini_cart();
+    $fragments['.mini-cart-wrap'] = ob_get_clean();
+
+    return $fragments;
+}
+add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
+
 
 

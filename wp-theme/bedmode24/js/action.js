@@ -29,20 +29,66 @@ jQuery(document).ready(function ($) {
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $( document.body ).trigger('wc_update_cart');
 
-                // if ( !$( '.woocommerce-cart-form' ).length) {
-                //     $.fancybox.open( $('#cart'), {
-                //         touch:false,
-                //         autoFocus:false,
-                //     });
-                // }
-                $.fancybox.open( $('#cart'), {
-                    touch:false,
-                    autoFocus:false,
-                });
+
+                $('.fancybox-cart').click();
             }
         });
     })
 
+
+    /* remove_from_cart_button */
+
+
+    $(document).on('click', '.delete-cart-item a', function( e ){
+        e.preventDefault();
+        var key = $(this).attr('data-cart_item_key');
+
+        if ( $( '.woocommerce-cart-form' ).length ||  $( '.woocommerce-checkout' ).length) {
+            $(this).closest('.item').remove();
+        }
+
+        $(this).closest('.item').remove();
+
+        $.ajax({
+            type: 'get',
+            url: wc_add_to_cart_params.ajax_url,
+            data: {
+                action: 'remove_from_cart',
+                key: key
+            },
+
+            success: function (data) {
+
+                $(document.body).trigger('wc_update_cart');
+                $(document.body ).trigger( 'wc_fragment_refresh' );
+                $(document.body).trigger('update_checkout');
+
+
+            }
+        })
+
+    })
+
+
+    /* mini cart update */
+
+    function ajax_mini_cart_update() {
+
+        $.ajax({
+            url:globals.url,
+            data:{
+
+                action:'update_mini_cart',
+            },
+            success:function(data){
+
+                $( document.body ).trigger( 'wc_fragment_refresh' );
+
+            }
+        })
+    }
+
+    /* load more*/
 
     $(document).on('click', '#aload', function(e){
     e.preventDefault();
