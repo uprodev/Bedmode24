@@ -30,6 +30,8 @@ if ( post_password_required() ) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 }
+
+$cat = get_the_terms(get_the_ID(), 'product_cat');
 ?>
 <section class="product-inner bg-light-grey">
     <div class="container">
@@ -49,9 +51,11 @@ if ( post_password_required() ) {
             </div>
 
             <div class="text col-lg-6 col-12">
-                <h6 class="subtitle">Dekbedovertrek</h6>
-                <h1>Beddinghouse Benthe Grey</h1>
-                <p class="price">€39,95</p>
+                <?php if($cat):?>
+                    <h6 class="subtitle"><?= $cat[0]->name;?></h6>
+                <?php endif;?>
+                <?php woocommerce_template_single_title();?>
+                <p class="price"><?php woocommerce_template_single_price();?></p>
                 <div class="wrap-form">
                     <div class="select-block">
                         <label class="form-label" for="lang">Uitvoering</label>
@@ -68,8 +72,9 @@ if ( post_password_required() ) {
                     </div>
                 </div>
                 <ul class="info-product d-flex flex-wrap align-items-start">
-                    <li class="li-info "><span></span> 24 Op voorraad</li>
+                    <li class="li-info "><span></span> Op voorraad</li>
                     <li class="cost d-flex align-items-start">
+                        <?php woocommerce_template_single_price();?>
                         <p class="old">€49,95</p>
                         <p class="new">€39,95</p>
                     </li>
@@ -77,10 +82,9 @@ if ( post_password_required() ) {
                 <div class="btn-wrap">
                     <a href="#" class="btn-blue btn-default rounded-5">Toevoegen aan winkelwagen</a>
                 </div>
-                <div class="text-wrap">
-                    <p>Dekbedovertrek Benthe Grey van Beddinghouse bestaat uit verschillende banen met diverse weefstructuren en grafische motieven. Donkere en lichtere tinten wisselen elkaar af en zorgen voor contrast. Het dekbedovertrek is gemaakt van 100% katoen. Katoen is een natuurlijk product dat ademt en goed vocht opneemt.</p>
-                    <p class="ean">EAN <span>8718518398565</span></p>
-                </div>
+
+                <?php woocommerce_template_single_excerpt();?>
+
 
                 <ul class="check-list d-flex flex-wrap ">
                     <li><i class="far fa-check"></i> Klanten geven ons een 4,9/5</li>
@@ -93,17 +97,69 @@ if ( post_password_required() ) {
 
     </div>
 </section>
+
+<section class="product-tabs">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="tabs">
+                <ul class="tabs-menu">
+                    <li><span data-title="Beschrijving">Beschrijving</span></li>
+                    <li><span data-title="Extra informatie">Extra informatie</span></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-item">
+
+                        <?= $product->get_description();?>
+
+                    </div>
+                    <div class="tab-item">
+                        <div class="tab-table">
+                            <div class="tab-row">
+                                <div class="data data-1">
+                                    <p>Lorem</p>
+                                </div>
+                                <div class="data data-2">
+                                    <p>Lorem</p>
+                                </div>
+                            </div>
+                            <div class="tab-row">
+                                <div class="data data-1">
+                                    <p>Lorem</p>
+                                </div>
+                                <div class="data data-2">
+                                    <p>Lorem</p>
+                                </div>
+                            </div>
+                            <div class="tab-row">
+                                <div class="data data-1">
+                                    <p>Lorem</p>
+                                </div>
+                                <div class="data data-2">
+                                    <p>Lorem</p>
+                                </div>
+                            </div>
+                            <div class="tab-row">
+                                <div class="data data-1">
+                                    <p>Lorem</p>
+                                </div>
+                                <div class="data data-2">
+                                    <p>Lorem</p>
+                                    <p>Lorem</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <div id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 
-	<?php
-	/**
-	 * Hook: woocommerce_before_single_product_summary.
-	 *
-	 * @hooked woocommerce_show_product_sale_flash - 10
-	 * @hooked woocommerce_show_product_images - 20
-	 */
-	do_action( 'woocommerce_before_single_product_summary' );
-	?>
+
 
 	<div class="summary entry-summary">
 		<?php
