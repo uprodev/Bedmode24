@@ -51,44 +51,21 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
             </div>
 
             <div class="text col-lg-6 col-12">
+
                 <?php if($cat):?>
                     <h6 class="subtitle"><?= $cat[0]->name;?></h6>
                 <?php endif;?>
+
                 <?php woocommerce_template_single_title();?>
+
                 <p class="price"><?= $product->get_price_html();?></p>
 
-                <div class="wrap-form">
-                    <div class="select-block">
-                        <label class="form-label" for="lang">Uitvoering</label>
-                        <select id="lang">
-                            <option value="0">140 x 200/200</option>
-                            <option value="1">140 x 100/100</option>
-                            <option value="2">100 x 200/200</option>
-                            <option value="3">140 x 300/300</option>
-                        </select>
-                    </div>
-                    <div class="number-wrap">
-                        <label for="number">Aantal</label>
-                        <input type="number" name="number" id="number" value="2">
-                    </div>
-                </div>
-                <ul class="info-product d-flex flex-wrap align-items-start">
-                    <li class="li-info "><span></span> Op voorraad</li>
-                    <li class="cost d-flex align-items-start">
-                        <?php woocommerce_template_single_price();?>
-                    </li>
-                </ul>
                 <?php woocommerce_template_single_add_to_cart();?>
 
                 <?php woocommerce_template_single_excerpt();?>
 
+                <?php get_template_part('parts/product_usps');?>
 
-                <ul class="check-list d-flex flex-wrap ">
-                    <li><i class="far fa-check"></i> Klanten geven ons een 4,9/5</li>
-                    <li><i class="far fa-check"></i> Gratis retourneren</li>
-                    <li><i class="far fa-check"></i> Gratis verzending vanaf €50</li>
-                    <li><i class="far fa-check"></i> Voor 21:00 besteld? Morgen in huis!</li>
-                </ul>
             </div>
         </div>
 

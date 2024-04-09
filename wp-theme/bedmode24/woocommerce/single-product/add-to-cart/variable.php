@@ -28,6 +28,28 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 <form class="variations_form cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data' data-product_id="<?php echo absint( $product->get_id() ); ?>" data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
 	<?php do_action( 'woocommerce_before_variations_form' ); ?>
 
+    <div class="wrap-form">
+        <div class="select-block">
+            <label class="form-label" for="lang">Uitvoering</label>
+            <select id="lang">
+                <option value="0">140 x 200/200</option>
+                <option value="1">140 x 100/100</option>
+                <option value="2">100 x 200/200</option>
+                <option value="3">140 x 300/300</option>
+            </select>
+        </div>
+        <div class="number-wrap">
+            <label for="number">Aantal</label>
+            <input type="number" name="number" id="number" value="2">
+        </div>
+    </div>
+    <ul class="info-product d-flex flex-wrap align-items-start">
+        <li class="li-info "><span></span> Op voorraad</li>
+        <li class="cost d-flex align-items-start">
+            <?php woocommerce_template_single_price();?>
+        </li>
+    </ul>
+
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 		<p class="stock out-of-stock"><?php echo esc_html( apply_filters( 'woocommerce_out_of_stock_message', __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) ) ); ?></p>
 	<?php else : ?>
