@@ -90,23 +90,23 @@ $attributes = $product->get_attributes();
                 <?php woocommerce_template_single_title();?>
 
                 <p class="price">
-                <?php if ($product->is_type('variable')){
-                   if($default_variation && $default_variation->get_price_html()){
-                       echo $default_variation->get_price_html();
-                   }else{
-                       echo $product->get_price_html();
-                   }
+                    <?php if ($product->is_type('variable')){
+                       if($default_variation && $default_variation->get_price_html()){
+                           echo $default_variation->get_price_html();
+                       }else{
+                           echo $product->get_price_html();
+                       }
 
-                }elseif($product->is_type('simple')) {
+                    }elseif($product->is_type('simple')) {
 
-                    $product->get_price_html();
+                        $product->get_price_html();
 
-                }?>
+                    }?>
                </p>
 
                 <?php woocommerce_template_single_add_to_cart();?>
 
-                <?php woocommerce_template_single_excerpt();?>
+                <?= $product->get_short_description();?>
 
                 <?php get_template_part('parts/product_usps');?>
 
