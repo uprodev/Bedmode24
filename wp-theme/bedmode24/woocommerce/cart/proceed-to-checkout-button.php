@@ -20,8 +20,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+$verder = get_field('verder_met_bestellen_button', get_option( 'woocommerce_cart_page_id' ));
 ?>
 
 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="checkout-button wc-forward btn-default btn-blue btn-mini rounded-5 px-4">
-    Verder met bestellen
+    <?= $verder??'Verder met bestellen';?>
 </a>
