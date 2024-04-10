@@ -17,18 +17,26 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$idc = get_option( 'woocommerce_cart_page_id' );
+
+$table = get_field('table_title', $idc);
+$subtotal_labele = get_field('subtotal_labele', $idc);
+$total_price = get_field('total_price', $idc);
+
 ?>
 
 <ul class="cart_totals  <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?> total-list col-lg-6 col-12">
     <?php do_action( 'woocommerce_before_cart_totals' ); ?>
-    <li class="head-list">Totalen winkelwagen</li>
+    <li class="head-list"><?= $table??'Totalen winkelwagen';?></li>
     <li>
-        <p>Subtotaal</p>
+        <p><?= $subtotal_labele??'Subtotaal';?></p>
         <p><?php wc_cart_totals_subtotal_html(); ?></p>
     </li>
         <li>
-            <p>Totaal</p>
-            <p><?php wc_cart_totals_order_total_html(); ?> <span>(Inclusief 13,87 BTW 21%)</span></p>
+            <p><?= $total_price??'Totaal';?></p>
+            <p><?php wc_cart_totals_order_total_html(); ?>
+                <span>(Inclusief 13,87 BTW 21%)</span>
+            </p>
         </li>
         <li>
             <?php do_action( 'woocommerce_proceed_to_checkout' ); ?>
