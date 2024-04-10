@@ -168,47 +168,32 @@ do_action( 'woocommerce_before_cart' ); ?>
     </div>
 </section>
 
-<section class="home-banner bg-light-grey">
-    <div class="container">
-        <div class="row">
-            <div class="info col-12 d-grid p-0">
-                <div class="info-item">
-                    <figure>
-                        <i class="fal fa-truck-container"></i>
-                    </figure>
-                    <div class="text-info">
-                        <h3 class="text-title">Snelle bezorging</h3>
-                        <p>Voor 21:00 besteld, morgen in huis</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <figure>
-                        <i class="far fa-comet"></i>
-                    </figure>
-                    <div class="text-info">
-                        <h3 class="text-title">Gratis verzending</h3>
-                        <p>Vanaf €50,-</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <figure>
-                        <i class="fal fa-shield-check"></i>
-                    </figure>
-                    <div class="text-info">
-                        <h3 class="text-title">1 jaar garantie</h3>
-                        <p>Aenean eu leo quam</p>
-                    </div>
-                </div>
-                <div class="info-item">
-                    <figure>
-                        <i class="fas fa-headset"></i>
-                    </figure>
-                    <div class="text-info">
-                        <h3 class="text-title">Goede service</h3>
-                        <p>Voor 21:00 besteld, morgen in huis</p>
-                    </div>
+<?php $usps = get_field('', 'options');
+
+if($usps):?>
+
+    <section class="home-banner bg-light-grey">
+        <div class="container">
+            <div class="row">
+                <div class="info col-12 d-grid p-0">
+                    <?php foreach ($usps as $usp):?>
+                        <div class="info-item">
+                            <figure>
+                                <?php if($usp['font_awesome_icon']):?>
+                                    <i class="<?= $usp['font_awesome_icon'];?>"></i>
+                                <?php endif;?>
+                            </figure>
+                            <div class="text-info">
+                                <?php if($usp['title']):?>
+                                    <h3 class="text-title"><?= $usp['title'];?></h3>
+                                <?php endif;?>
+                                <?= $usp['description'];?>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+<?php endif;
