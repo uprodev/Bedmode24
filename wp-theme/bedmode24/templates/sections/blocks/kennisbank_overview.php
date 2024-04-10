@@ -10,7 +10,7 @@ global $wp_query;
 $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
 $wp_query = new WP_Query([
-    'post_type' => array('nieuws', 'landingspagina'),
+    'post_type' => array('nieuws'),
     'posts_per_page' => 9,
     'paged' => $paged,
     'orderby' => 'date',
