@@ -21,7 +21,7 @@ $def = new WP_Query([
 
             <div class="swiper slider-product col-12 slider-product-1">
                 <div class="swiper-wrapper">
-                    <?php if($default):
+                    <?php if(!$default):
                         while($def->have_posts()): $def->the_post();?>
 
                             <div class="swiper-slide product-item">
