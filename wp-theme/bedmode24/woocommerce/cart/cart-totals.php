@@ -34,8 +34,7 @@ $total_price = get_field('total_price', $idc);
     </li>
         <li>
             <p><?= $total_price??'Totaal';?></p>
-            <p><?php wc_cart_totals_order_total_html(); ?>
-                <span>(Inclusief 13,87 BTW 21%)</span>
+            <p><?php wc_cart_totals_order_total_html(); ?> <span>(Inclusief 13,87 BTW 21%)</span>
             </p>
         </li>
 
