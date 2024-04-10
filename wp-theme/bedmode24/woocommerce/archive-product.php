@@ -19,6 +19,25 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
+if(is_shop()){
+    $ids = wc_get_page_id( 'shop' );
+    $title = get_field('title', $ids);
+    $name = get_the_title($ids);
+    $link = get_field('optional_white_button', $ids);
+    $img = get_field('category_banner_image', $ids);
+    $text = get_field('text', $ids);
+}else{
+    $ids = get_queried_object()->term_id;
+    $name = get_queried_object()->name;
+    $title = get_field('title', 'product_cat_'.$ids);
+    $link = get_field('optional_white_button', 'product_cat_'.$ids);
+    $img = get_field('category_banner_image', 'product_cat_'.$ids);
+    $text = get_field('text', 'product_cat_'.$ids);
+    $desc = '<p>'.get_queried_object()->description.'</p>';
+}
+
+
+
 
 ?>
 
@@ -26,12 +45,12 @@ get_header();
         <div class="container">
             <div class="row">
                 <div class="bg p-0">
-                    <img src="img/bg-11.jpg" alt="" class="img">
-                    <img src="img/bg-11.jpg" alt="" class="img img-mob">
+                    <img src="<?= $img??get_template_directory_uri().'/img/bg-11.jpg';?>" alt="" class="img">
+                    <img src="<?= $img??get_template_directory_uri().'/img/bg-11.jpg';?>" alt="" class="img img-mob">
                 </div>
                 <div class="content ">
-                    <h1>H1 Dekbedovertrek</h1>
-                    <p>Op zoek naar een mooi dekbedovertrek? Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                    <h1><?= $title??$name;?></h1>
+                    <?= $text??$desc;?>
                 </div>
             </div>
         </div>
