@@ -17,12 +17,19 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$idc = get_option( 'woocommerce_cart_page_id' );
+
+$title = get_field('title', $idc);
+$waardebon = get_field('waardebon_code_placeholder', $idc);
+$waardebon_btn = get_field('waardebon_code_button_text', $idc);
+$upd = get_field('update_shopping_cart_button_text', $idc);
+
 do_action( 'woocommerce_before_cart' ); ?>
 
 <section class="cart-block bg-light-grey">
     <div class="container">
         <div class="row">
-            <h1 class="p-0"><?php the_title();?></h1>
+            <h1 class="p-0"><?= $title??get_the_title();?></h1>
             <div class="content p-0">
                 <form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
                     <?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -124,13 +131,13 @@ do_action( 'woocommerce_before_cart' ); ?>
                                 <?php if ( wc_coupons_enabled() ) { ?>
                                     <div class="data data-1 coupon">
                                         <label for="coupon_code"></label>
-                                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Waardebon code" /> <button type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4"" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">Waardebon toepassen</button>
+                                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?= $waardebon??'Waardebon code';?>" /> <button type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?= $waardebon_btn??'Waardebon toepassen';?></button>
                                         <?php do_action( 'woocommerce_cart_coupon' ); ?>
                                      </div>
                                 <?php } ?>
 
                                 <div class="data data-2">
-                                    <button type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">Update winkelwagen</button>
+                                    <button type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?= $upd??'Update winkelwagen';?></button>
                                 </div>
                             </div>
 
@@ -168,7 +175,7 @@ do_action( 'woocommerce_before_cart' ); ?>
     </div>
 </section>
 
-<?php $usps = get_field('', 'options');
+<?php $usps = get_field('shopping_cart_usp', 'options');
 
 if($usps):?>
 
