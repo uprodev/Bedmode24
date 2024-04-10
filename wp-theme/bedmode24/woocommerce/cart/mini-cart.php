@@ -60,7 +60,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                         <div class="cost">
                             <p><?= $_product->get_price_html();?></p>
                         </div>
-                        <div class="delete-cart-item">
+                        <div class="delete-cart-item item-delete">
                             <a href="#" data-cart_item_key="<?= esc_attr( $cart_item_key );?>"><i class="fal fa-times-circle"></i></a>
                         </div>
                     </div>

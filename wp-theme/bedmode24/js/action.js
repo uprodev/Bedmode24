@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
 
+    $('button[name="update_cart"]').removeAttr('disabled');
+
     $(document).on('click', '.btn-count-plus', function(){
         var e = $(this).parent().find("input.qty");
         return e.val(parseInt(e.val()) + 1), e.change(), !1
@@ -75,15 +77,15 @@ jQuery(document).ready(function ($) {
     /* remove_from_cart_button */
 
 
-    $(document).on('click', '.delete-cart-item a', function( e ){
+    $(document).on('click', '.item-delete a', function( e ){
         e.preventDefault();
         var key = $(this).attr('data-cart_item_key');
 
-        if ( $( '.woocommerce-cart-form' ).length ||  $( '.woocommerce-checkout' ).length) {
-            $(this).closest('.item').remove();
-        }
-
-        $(this).closest('.item').remove();
+        // if ( $( '.woocommerce-cart-form' ).length ||  $( '.woocommerce-checkout' ).length) {
+        //     $(this).closest('.item').remove();
+        // }
+        //
+        // $(this).closest('.item').remove();
 
         $.ajax({
             type: 'get',

@@ -45,6 +45,7 @@ $label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 
 		size="4"
 		min="<?php echo esc_attr( $min_value ); ?>"
 		max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
+        data-key="<?= $key;?>"
 		<?php if ( ! $readonly ) : ?>
 			step="<?php echo esc_attr( $step ); ?>"
 			placeholder="<?php echo esc_attr( $placeholder ); ?>"
