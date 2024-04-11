@@ -12,6 +12,8 @@ $telephone = get_field('telephone', 'options');
 $email = get_field('email', 'options');
 $social_title = get_field('subtitle_social_footer', 'options');
 $socials = get_field('list_social_media', 'options');
+$list_text = get_field('bottom_text', 'options');
+$bottom_footer = get_field('gallery_bottom_footer', 'options');
 
 ?>
 
@@ -143,20 +145,26 @@ $socials = get_field('list_social_media', 'options');
         <div class="container">
             <div class="row d-flex align-items-center justify-content-between">
                 <div class="line"></div>
-                <div class="text-bottom p-0">
-                    <p>Copyright © 2024 BEDMODE24 • Alle genoemde prijzen zijn inclusief BTW • Website door <a href="#">The DISTRIKT</a></p>
-                </div>
-                <div class="icon-wrap p-0">
-                    <ul class="d-flex justify-content-xxl-end justify-content-center">
-                        <li class="ideal"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-1.png" alt=""></a></li>
-                        <li class="master"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-2.png" alt=""></a></li>
-                        <li class="viza"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-3.png" alt=""></a></li>
-                        <li class="pay"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-4.png" alt=""></a></li>
-                        <li class="rive"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-5.png" alt=""></a></li>
-                        <li class="in3"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-6.png" alt=""></a></li>
-                        <li class="bill"><a href="#"><img src="<?= get_template_directory_uri();?>/img/footer-7.png" alt=""></a></li>
-                    </ul>
-                </div>
+                <?php if($list_text): $l=1;?>
+                    <div class="text-bottom p-0">
+                        <p>
+                            <?php foreach ($list_text as $lt):?>
+                                <?= $l!=1?' • ':'';?><?= $lt['text'];?>
+                                <?php $l++; endforeach;?>
+                        </p>
+                    </div>
+                <?php endif;?>
+
+                <?php if($bottom_footer):?>
+                    <div class="icon-wrap p-0">
+                        <ul class="d-flex justify-content-xxl-end justify-content-center">
+                            <?php foreach($bottom_footer as $bf):?>
+                                <li class="<?= $bf['class'];?>"><a href="<?= $bf['link'];?>" target="_blank"><img src="<?= $bf['logo']['url'];?>" alt="<?= $bf['logo']['alt'];?>"></a></li>
+                            <?php endforeach;?>
+
+                        </ul>
+                    </div>
+                <?php endif;?>
             </div>
         </div>
     </div>
