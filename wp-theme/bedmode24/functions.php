@@ -14,8 +14,10 @@ add_action('after_setup_theme', 'theme_register_nav_menu');
 
 function theme_register_nav_menu(){
 	register_nav_menus( array(
-        'main-menu' => 'header',
-        'mob-menu'  => 'mobile',
+        'footer1' => 'Footer 1',
+        'footer2' => 'Footer 2',
+        'footer3' => 'Footer 3',
+        'footer4' => 'Footer 4',
        )
     );
 	add_theme_support( 'post-thumbnails');

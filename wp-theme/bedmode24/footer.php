@@ -1,3 +1,20 @@
+<?php
+
+$title_f1 = get_field('title_column_footer_1', 'options');
+$title_f2 = get_field('title_column_footer_2', 'options');
+$title_f3 = get_field('title_column_footer_3', 'options');
+$title_f4 = get_field('title_column_footer_4', 'options');
+$title_f5 = get_field('title_column_footer_5', 'options');
+$descr = get_field('subtitle_column_footer_1', 'options');
+$street = get_field('street', 'options');
+$postalcode = get_field('postalcode', 'options');
+$telephone = get_field('telephone', 'options');
+$email = get_field('email', 'options');
+$social_title = get_field('subtitle_social_footer', 'options');
+$socials = get_field('list_social_media', 'options');
+
+?>
+
 </main>
 
 <footer>
@@ -21,77 +38,102 @@
             </div>
             <div class="content p-0 d-grid">
                 <div class="item item-1">
-                    <h6>Contact</h6>
+
+                    <?php if($title_f1):?>
+                        <h6><?= $title_f1;?></h6>
+                    <?php endif;?>
                     <div class="wrap-mob">
-                        <p class="info">Bedmode24</p>
+
+                        <?php if($descr):?>
+                            <p class="info"><?= $descr;?></p>
+                        <?php endif;?>
+
                         <ul class="info-list">
-                            <li>
-                                <p class="text"><i class="fal fa-map-marker-alt"></i>Esp 115<br>
-                                    5633 AA Eindhoven</p>
-                            </li>
-                            <li>
-                                <a href="tel:+380401234567"><i class="fal fa-phone-alt"></i>040 - 123 45 67</a>
-                            </li>
-                            <li>
-                                <a href="mailto:info@bedmode24.nl"><i class="fal fa-envelope"></i>info@bedmode24.nl</a>
-                            </li>
+                            <?php if($street || $postalcode):?>
+                                <li>
+                                    <p class="text"><i class="fal fa-map-marker-alt"></i><?= $street?><?= $postalcode?'<br> '.$postalcode:'';?></p>
+                                </li>
+                            <?php endif;?>
+                            <?php if($telephone):?>
+                                <li>
+                                    <a href="tel:+<?= phone_clear($telephone);?>"><i class="fal fa-phone-alt"></i><?= $telephone;?></a>
+                                </li>
+                            <?php endif;?>
+                            <?php if($email):?>
+                                <li>
+                                    <a href="mailto:<?= $email;?>"><i class="fal fa-envelope"></i><?= $email;?></a>
+                                </li>
+                            <?php endif;?>
                         </ul>
 
-                        <p class="info soc-title">Volg ons ook online</p>
-                        <ul class="soc-list d-flex">
-                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                        </ul>
+                        <?php if($social_title):?>
+                            <p class="info soc-title"><?= $social_title;?></p>
+                        <?php endif;?>
+
+                        <?php if($socials):?>
+                            <ul class="soc-list d-flex">
+                                <?php foreach ($socials as $soc):?>
+                                    <li><a href="<?= $soc['link'];?>" target="_blank"><i class="<?= $soc['icon'];?>"></i></a></li>
+                                <?php endforeach;?>
+                            </ul>
+                        <?php endif;?>
                     </div>
                 </div>
                 <div class="item item-2">
-                    <h6>Klantenservice</h6>
-                    <ul class="info-list list-footer wrap-mob">
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Service & contact</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Veel gestelde vragen</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Verzending en bezorging</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Bestellen</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Retourneren</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Hoofkussen</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Garantie</a></li>
-                    </ul>
+
+                    <?php if($title_f2):?>
+                        <h6><?= $title_f2;?></h6>
+                    <?php endif;?>
+
+                    <?php wp_nav_menu([
+                        'theme_location' => 'footer1',
+                        'container' => false,
+                        'menu_class' => 'info-list list-footer wrap-mob',
+                        'link_before' => '<i class="fal fa-long-arrow-right"></i>',
+                    ]);?>
+
                 </div>
                 <div class="item item-3">
-                    <h6>Productcategorie</h6>
-                    <ul class="info-list list-footer wrap-mob">
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Dekbedovertrek</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Hoeslaken</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Dekbed</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Matrasbeschermer</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Laken</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Hoofkussen</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Kussensloop</a></li>
-                    </ul>
+
+                    <?php if($title_f3):?>
+                        <h6><?= $title_f3;?></h6>
+                    <?php endif;?>
+
+                    <?php wp_nav_menu([
+                        'theme_location' => 'footer2',
+                        'container' => false,
+                        'menu_class' => 'info-list list-footer wrap-mob',
+                        'link_before' => '<i class="fal fa-long-arrow-right"></i>',
+                    ]);?>
+
                 </div>
                 <div class="item item-4">
-                    <h6>Merk</h6>
-                    <ul class="info-list list-footer wrap-mob">
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Bonnanotte</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Bedmode 24</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Heckett Lane</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Papillon</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Beddinghouse</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Zo! Home</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Alles bekijken</a></li>
-                    </ul>
+
+                    <?php if($title_f4):?>
+                        <h6><?= $title_f4;?></h6>
+                    <?php endif;?>
+
+                    <?php wp_nav_menu([
+                        'theme_location' => 'footer3',
+                        'container' => false,
+                        'menu_class' => 'info-list list-footer wrap-mob',
+                        'link_before' => '<i class="fal fa-long-arrow-right"></i>',
+                    ]);?>
+
                 </div>
                 <div class="item item-5">
-                    <h6>Bedmode24</h6>
-                    <ul class="info-list list-footer wrap-mob">
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Over ons</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Mijn account</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Contact</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Algemene voorwaarden</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Privacybeleid</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Blog</a></li>
-                        <li><a href="#"><i class="fal fa-long-arrow-right"></i>Bekijk meer</a></li>
-                    </ul>
+
+                    <?php if($title_f5):?>
+                        <h6><?= $title_f5;?></h6>
+                    <?php endif;?>
+
+                    <?php wp_nav_menu([
+                        'theme_location' => 'footer4',
+                        'container' => false,
+                        'menu_class' => 'info-list list-footer wrap-mob',
+                        'link_before' => '<i class="fal fa-long-arrow-right"></i>',
+                    ]);?>
+
                 </div>
             </div>
         </div>
