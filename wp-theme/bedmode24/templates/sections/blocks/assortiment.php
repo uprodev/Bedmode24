@@ -28,7 +28,7 @@ $def = new WP_Query([
                                 <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
 
-                        <?php endwhile; wp_reset_postdata();
+                        <?php endwhile; wp_reset_query();
 
                     else:
 
@@ -38,7 +38,7 @@ $def = new WP_Query([
                                 <?php wc_get_template_part( 'content', 'product' );?>
                             </div>
 
-                        <?php endforeach; wp_reset_postdata(); ?>
+                        <?php endforeach; wp_reset_query(); ?>
                     <?php endif;?>
                 </div>
                 <div class="swiper-pagination product-pagination product-pagination-1"></div>
