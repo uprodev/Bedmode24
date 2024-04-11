@@ -2,6 +2,7 @@
 
 $actions = [
     'load_more',
+    'load_merken',
     'add_to_cart',
     'remove_from_cart',
     'qty_cart',
@@ -19,7 +20,7 @@ function load_more(){
     $paged = $_GET['paged']+1;
 
     $wp_query = new WP_Query([
-        'post_type' => array('nieuws', 'landingspagina'),
+        'post_type' => 'merken',
         'posts_per_page' => 6,
         'paged' => $paged,
         'orderby' => 'date',
@@ -29,6 +30,32 @@ function load_more(){
     while($wp_query->have_posts()): $wp_query->the_post();
 
         get_template_part('parts/nieuws');
+
+    endwhile;
+
+    wp_reset_postdata();
+
+    die();
+
+}
+
+
+
+/* load more merken*/
+
+function load_merken(){
+
+    $paged = $_GET['paged']+1;
+
+    $wp_query = new WP_Query([
+        'post_type' => 'merken',
+        'posts_per_page' => 9,
+        'paged' => $paged,
+    ]);
+
+    while($wp_query->have_posts()): $wp_query->the_post();
+
+        get_template_part('parts/merken');
 
     endwhile;
 

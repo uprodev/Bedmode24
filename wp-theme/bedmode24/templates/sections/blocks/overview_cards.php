@@ -12,7 +12,7 @@ $title = get_sub_field('title');
             <?php if($title):?>
                 <h2 class="p-0 text-center mb-4"><?= $title;?></h2>
             <?php endif;?>
-            <div class="content p-0 d-grid">
+            <div class="content p-0 d-grid ajax-merken">
                 <?php if($default):
                     if($cards):
                         foreach ($cards as $card):
@@ -47,30 +47,37 @@ $title = get_sub_field('title');
                             </div>
                         <?php endforeach;
                         endif;
-                else:?>
-                    <div class="item">
-                        <a href="#">
-                            <figure>
-                                <img src="img/logo-1.svg" alt="">
-                            </figure>
-                            <div class="text">
-                                <h6 class="subtitle">Merk</h6>
-                                <h3 class="title">Beddinghouse</h3>
-                                <div class="arrow-wrap">
-                                            <span>
-                                                <i class="fal fa-long-arrow-right"></i>
-                                            </span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                <?php endif;?>
+                else:
+                    global $wp_query;
+
+                    $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+
+                    $wp_query = new WP_Query([
+                       'post_type' => 'merken',
+                        'posts_per_page' => 9,
+                        'paged' => get_query_var( 'paged' )??1,
+                    ]);
+
+                    $max_pages = $wp_query->max_num_pages;
+
+                    while($wp_query->have_posts()): $wp_query->the_post();
+
+                        get_template_part('parts/merken');
+
+                    endwhile; wp_reset_postdata();
+
+                endif;?>
 
             </div>
             <?php if(!$default):?>
-                <div class="btn-wrap d-flex justify-content-center">
-                    <a href="#" class="btn-default btn-blue rounded-5 px-5 btn-shadow"><?= $link_text?$link_text:'Meer laden';?></a>
-                </div>
+                <?php if( $paged < $max_pages ):?>
+
+                    <div class="btn-wrap d-flex justify-content-center">
+                        <a href="#" data-paged="<?= $paged;?>" data-max_page="<?= $max_pages;?>" class="btn-default btn-blue rounded-5 px-5 btn-shadow" id="mload"><?= $link_text?$link_text:'Meer laden';?></a>
+                    </div>
+
+                <?php endif;?>
+
             <?php endif;?>
         </div>
     </div>
