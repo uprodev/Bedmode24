@@ -18,73 +18,57 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$img = get_field('background_image_ty', 'options');
+$subtitle = get_field('subtitle_ty', 'options');
+$title = get_field('title_ty', 'options');
+$text = get_field('description_ty', 'options');
+$link = get_field('cta_button_ty', 'options');
+$link2 = get_field('second_button_ty', 'options');
+
 ?>
 
-<div class="woocommerce-order">
+<section class="block-404">
+    <?php if($img):?>
+        <div class="bg">
+            <img src="<?= $img['url'];?>" alt="<?= $img['alt'];?>">
+        </div>
+    <?php endif;?>
+    <div class="container">
+        <div class="row">
+            <div class="content p-0">
+                <?php if($subtitle):?>
+                    <h6 class="subtitle"><?= $subtitle;?></h6>
+                <?php endif;?>
+                <?php if($title):?>
+                    <h1><?= $title;?></h1>
+                <?php endif;?>
+                <?php if($text):?>
+                    <div class="text">
+                        <?= $text;?>
+                    </div>
+                <?php endif;?>
+                <?php if( $link ):
+                    $link_url = $link['url'];
+                    $link_title = $link['title'];
+                    $link_target = $link['target'] ? $link['target'] : '_self';
+                    ?>
+                    <div class="btn-wrap d-flex flex-wrap">
+                        <a class="btn-default rounded-5 btn-block" href="<?= esc_url($link_url); ?>" target="<?= esc_attr($link_target); ?>"><?= esc_html($link_title); ?></a>
+                    </div>
+                <?php endif; ?>
 
-	<?php
-	if ( $order ) :
+                <?php if( $link2 ):
+                    $link2_url = $link2['url'];
+                    $link2_title = $link2['title'];
+                    $link2_target = $link2['target'] ? $link2['target'] : '_self';
+                    ?>
+                    <div class="btn-wrap d-flex flex-wrap">
+                        <a class="btn-default rounded-5 btn-block" href="<?= esc_url($link2_url); ?>" target="<?= esc_attr($link2_target); ?>"><?= esc_html($link2_title); ?></a>
+                    </div>
+                <?php endif; ?>
 
-		do_action( 'woocommerce_before_thankyou', $order->get_id() );
-		?>
-
-		<?php if ( $order->has_status( 'failed' ) ) : ?>
-
-			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed"><?php esc_html_e( 'Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce' ); ?></p>
-
-			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
-				<a href="<?php echo esc_url( $order->get_checkout_payment_url() ); ?>" class="button pay"><?php esc_html_e( 'Pay', 'woocommerce' ); ?></a>
-				<?php if ( is_user_logged_in() ) : ?>
-					<a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>" class="button pay"><?php esc_html_e( 'My account', 'woocommerce' ); ?></a>
-				<?php endif; ?>
-			</p>
-
-		<?php else : ?>
-
-			<?php wc_get_template( 'checkout/order-received.php', array( 'order' => $order ) ); ?>
-
-			<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
-
-				<li class="woocommerce-order-overview__order order">
-					<?php esc_html_e( 'Order number:', 'woocommerce' ); ?>
-					<strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-				</li>
-
-				<li class="woocommerce-order-overview__date date">
-					<?php esc_html_e( 'Date:', 'woocommerce' ); ?>
-					<strong><?php echo wc_format_datetime( $order->get_date_created() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-				</li>
-
-				<?php if ( is_user_logged_in() && $order->get_user_id() === get_current_user_id() && $order->get_billing_email() ) : ?>
-					<li class="woocommerce-order-overview__email email">
-						<?php esc_html_e( 'Email:', 'woocommerce' ); ?>
-						<strong><?php echo $order->get_billing_email(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-					</li>
-				<?php endif; ?>
-
-				<li class="woocommerce-order-overview__total total">
-					<?php esc_html_e( 'Total:', 'woocommerce' ); ?>
-					<strong><?php echo $order->get_formatted_order_total(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
-				</li>
-
-				<?php if ( $order->get_payment_method_title() ) : ?>
-					<li class="woocommerce-order-overview__payment-method method">
-						<?php esc_html_e( 'Payment method:', 'woocommerce' ); ?>
-						<strong><?php echo wp_kses_post( $order->get_payment_method_title() ); ?></strong>
-					</li>
-				<?php endif; ?>
-
-			</ul>
-
-		<?php endif; ?>
-
-		<?php do_action( 'woocommerce_thankyou_' . $order->get_payment_method(), $order->get_id() ); ?>
-		<?php do_action( 'woocommerce_thankyou', $order->get_id() ); ?>
-
-	<?php else : ?>
-
-		<?php wc_get_template( 'checkout/order-received.php', array( 'order' => false ) ); ?>
-
-	<?php endif; ?>
-
-</div>
+            </div>
+        </div>
+    </div>
+</section>
