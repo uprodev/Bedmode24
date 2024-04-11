@@ -25,13 +25,11 @@ defined( 'ABSPATH' ) || exit;
             <h1 class="p-0"><?php the_title();?></h1>
             <div class="content p-0">
 
-                <?php
+                <?php do_action( 'woocommerce_account_navigation' ); ?>
 
-                    do_action( 'woocommerce_account_navigation' );
-
-                    do_action( 'woocommerce_account_content' );
-
-                ?>
+                <div class="wrap">
+                    <?php do_action( 'woocommerce_account_content' );?>
+                </div>
 
             </div>
 

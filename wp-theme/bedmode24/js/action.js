@@ -1,5 +1,9 @@
 jQuery(document).ready(function ($) {
 
+    $(document).on('ajaxComplete', function(){
+        $('.select-block select').niceSelect();
+    });
+
     $('button[name="update_cart"]').removeAttr('disabled');
 
     $(document).on('click', '.btn-count-plus', function(){
