@@ -125,7 +125,7 @@ function qty_cart(){
 function search_nieuws(){
 
     $args  = array(
-        's'           => $_GET['s'],
+        's'           => $_GET['search'],
         'numberposts' => -1,
         'post_types'  => 'nieuws',
         'relevanssi'  => true,
@@ -134,7 +134,7 @@ function search_nieuws(){
             [
                 'taxonomy' => 'nieuws_category',
                 'field' => 'id',
-                'terms' => [ $_GET['categorien'] ]
+                'terms' => [ $_GET['categ'] ]
             ],
             [
                 'taxonomy' => 'nieuws_label',
@@ -149,15 +149,17 @@ function search_nieuws(){
     $query->parse_query( $args );
 
     add_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
+    
     relevanssi_do_query( $query );
-    remove_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
+
 
     while($query->have_posts()): $query->the_post();
         get_template_part('parts/nieuws');
 
-        endwhile;
+    endwhile;
 
-        die();
+    remove_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
 
+    die();
 
 }

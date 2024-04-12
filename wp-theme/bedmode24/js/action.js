@@ -195,16 +195,20 @@ jQuery(document).ready(function ($) {
     /* search */
 
 
-    $(document).on('submit', '#search', function(e){
+    $(document).on('submit', '#search-form', function(e){
         e.preventDefault();
 
-        let query = $('#search').serialize();
+        let search = $('#search').val();
+        let soort = $('#select-2').val();
+        let categ = $('#select-1').val();
 
         $.ajax({
             url: globals.url,
             data:{
                 action:'search_nieuws',
-                query:query,
+                search:search,
+                soort:soort,
+                categ:categ,
             },
             success:function(data){
 
