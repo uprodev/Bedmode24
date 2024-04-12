@@ -1,8 +1,19 @@
 jQuery(document).ready(function ($) {
 
+
+
     $(document).on('ajaxComplete', function(){
         $('.select-block select').niceSelect();
     });
+
+    /* scroll top*/
+
+    $(document).on('click','.woocommerce-pagination a.page-numbers', function() {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+        return false;
+    });
+
 
     $('button[name="update_cart"]').removeAttr('disabled');
 
@@ -84,12 +95,6 @@ jQuery(document).ready(function ($) {
     $(document).on('click', '.item-delete a', function( e ){
         e.preventDefault();
         var key = $(this).attr('data-cart_item_key');
-
-        // if ( $( '.woocommerce-cart-form' ).length ||  $( '.woocommerce-checkout' ).length) {
-        //     $(this).closest('.item').remove();
-        // }
-        //
-        // $(this).closest('.item').remove();
 
         $.ajax({
             type: 'get',

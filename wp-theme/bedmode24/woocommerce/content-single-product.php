@@ -99,7 +99,7 @@ $attributes = $product->get_attributes();
 
                     }elseif($product->is_type('simple')) {
 
-                        $product->get_price_html();
+                        echo $product->get_price_html();
 
                     }?>
                </p>
