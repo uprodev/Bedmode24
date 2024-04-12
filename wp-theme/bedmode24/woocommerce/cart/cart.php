@@ -137,7 +137,7 @@ do_action( 'woocommerce_before_cart' ); ?>
                                 <?php } ?>
 
                                 <div class="data data-2">
-                                    <button type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?= $upd??'Update winkelwagen';?></button>
+                                    <button style="display:none;" type="submit" class="btn-default btn-blue btn-mini rounded-5 px-4" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?= $upd??'Update winkelwagen';?></button>
                                 </div>
                             </div>
 
