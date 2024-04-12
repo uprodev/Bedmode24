@@ -48,7 +48,6 @@ $title = get_sub_field('title');
                         <?php endforeach;
                         endif;
                 else:
-                    global $wp_query;
 
                     $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 

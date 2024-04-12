@@ -9,6 +9,7 @@ $image_mob = get_sub_field('mobile_background_image');
 $pl1 = get_sub_field('placeholder_option_1');
 $pl2 = get_sub_field('placeholder_option_2');
 $cats = get_terms(['taxonomy' => 'nieuws_category', 'hide_empty' => false,]);
+$labels = get_terms(['taxonomy' => 'nieuws_label', 'hide_empty' => false,]);
 ?>
 
 <section class="page-title-bg base-filter">
@@ -63,9 +64,9 @@ $cats = get_terms(['taxonomy' => 'nieuws_category', 'hide_empty' => false,]);
                             <label class="form-label" for="select-2"></label>
                             <select id="select-2" name="soort">
                                 <option value="0" disabled selected><?= $pl2?$pl2:'Soort [Bijv. Inspiratie of blog]';?></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <?php foreach($labels as $lbl):?>
+                                    <option value="<?= $lbl->term_id;?>"><?= $lbl->name;?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="input-wrap">

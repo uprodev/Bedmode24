@@ -20,8 +20,8 @@ function load_more(){
     $paged = $_GET['paged']+1;
 
     $wp_query = new WP_Query([
-        'post_type' => 'merken',
-        'posts_per_page' => 6,
+        'post_type' => 'nieuws',
+        'posts_per_page' => 9,
         'paged' => $paged,
         'orderby' => 'date',
         'order' => 'DESC',

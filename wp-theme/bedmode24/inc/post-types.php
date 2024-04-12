@@ -84,6 +84,8 @@ function cptui_register_my_cpts_nieuws() {
     register_post_type( "nieuws", $args );
 
     register_taxonomy("nieuws_category", array("nieuws"), array("hierarchical" => true, "label" => __("Kennisbank Categories", "bedmode24"), "query_var" => true, "rewrite" => true, "show_in_rest" => true));
+
+    register_taxonomy("nieuws_label", array("nieuws"), array("hierarchical" => true, "label" => __("Kennisbank Labels", "bedmode24"), "query_var" => true, "rewrite" => true, "show_in_rest" => true));
 }
 
 add_action( 'init', 'cptui_register_my_cpts_nieuws' );
