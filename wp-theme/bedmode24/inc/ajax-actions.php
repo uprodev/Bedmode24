@@ -73,11 +73,25 @@ function load_merken(){
 
 
 function add_to_cart() {
+
+
     $product_id = (int)$_GET['product_id'];
     $variation_id = (int)$_GET['variation_id'];
     $qty = (int)$_GET['qty']??1;
 
-    $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
+    $product = wc_get_product($product_id);
+
+    if ($product->is_type('variable')) {
+        if($variation_id) {
+            $added = WC()->cart->add_to_cart($product_id, $qty, $variation_id);
+        }else{
+            wp_send_json([
+                'alert' => 'no variation',
+            ]);
+        }
+    }else{
+        $added = WC()->cart->add_to_cart($product_id, $qty);
+    }
 
     wp_die();
 

@@ -81,9 +81,10 @@ jQuery(document).ready(function ($) {
 
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $( document.body ).trigger('wc_update_cart');
-
-
-                $('.fancybox-cart').click();
+                
+                if(data.alert != 'no variation') {
+                    $('.fancybox-cart').click();
+                }
             }
         });
     })
