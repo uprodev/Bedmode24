@@ -192,4 +192,28 @@ jQuery(document).ready(function ($) {
     });
 
 
+    /* search */
+
+
+    $(document).on('submit', '#search', function(e){
+        e.preventDefault();
+
+        let query = $('#search').serialize();
+
+        $.ajax({
+            url: globals.url,
+            data:{
+                action:'search_nieuws',
+                query:query,
+            },
+            success:function(data){
+
+                $('.content-ajax').html(data);
+
+            }
+        });
+    });
+
+
+
 });

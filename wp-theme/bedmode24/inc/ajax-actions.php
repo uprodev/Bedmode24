@@ -6,6 +6,7 @@ $actions = [
     'add_to_cart',
     'remove_from_cart',
     'qty_cart',
+    'search_nieuws',
 ];
 
 foreach($actions as $action){
@@ -114,4 +115,49 @@ function qty_cart(){
     }
 
     die();
+}
+
+
+/**
+ * search
+ */
+
+function search_nieuws(){
+
+    $args  = array(
+        's'           => $_GET['s'],
+        'numberposts' => -1,
+        'post_types'  => 'nieuws',
+        'relevanssi'  => true,
+        'tax_query' => [
+            'relation' => 'OR',
+            [
+                'taxonomy' => 'nieuws_category',
+                'field' => 'id',
+                'terms' => [ $_GET['categorien'] ]
+            ],
+            [
+                'taxonomy' => 'nieuws_label',
+                'field' => 'id',
+                'terms' => [ $_GET['soort'] ]
+            ]
+        ]
+    );
+
+    $query = new WP_Query( $args );
+
+    $query->parse_query( $args );
+
+    add_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
+    relevanssi_do_query( $query );
+    remove_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
+
+    while($query->have_posts()): $query->the_post();
+        get_template_part('parts/nieuws');
+
+        endwhile;
+
+        die();
+
+
 }

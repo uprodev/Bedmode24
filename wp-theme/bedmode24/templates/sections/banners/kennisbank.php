@@ -49,7 +49,7 @@ $labels = get_terms(['taxonomy' => 'nieuws_label', 'hide_empty' => false,]);
     <div class="filter-wrap">
         <div class="container">
             <div class="row">
-                <form action="#" class="p-0">
+                <form action="#" class="p-0" id="search">
                     <div class="filter-content d-flex justify-content-between flex-wrap">
                         <div class="select-block input-wrap select-block-1">
                             <label class="form-label" for="select-1"></label>
