@@ -1,5 +1,6 @@
 <?php
 
+$subtitle = get_sub_field('subtitle');
 $title = get_sub_field('title');
 $items= get_sub_field('items');
 
@@ -8,6 +9,9 @@ $items= get_sub_field('items');
 <section class="card-3x card-3x-about">
     <div class="container">
         <div class="row">
+            <?php if($subtitle):?>
+                <h6 class="subtitle"><?= $subtitle;?></h6>
+            <?php endif;?>
             <?php if($title):?>
                 <h2 class="title"><?= $title;?></h2>
             <?php endif;?>

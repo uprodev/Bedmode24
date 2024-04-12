@@ -149,7 +149,7 @@ function search_nieuws(){
     $query->parse_query( $args );
 
     add_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
-    
+
     relevanssi_do_query( $query );
 
 
