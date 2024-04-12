@@ -19,6 +19,7 @@ $id = get_the_ID();
     <?php while( have_rows('content', $id) ): the_row(); ?>
 
         <?php get_template_part('templates/sections/blocks/' . get_row_layout()); ?>
+        <?php wp_reset_query() ?>
 
     <?php endwhile; ?>
 
