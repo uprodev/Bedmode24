@@ -26,5 +26,24 @@ function add_points_widget_to_fragment( $fragments ) {
 }
 add_filter('add_to_cart_fragments', 'add_points_widget_to_fragment');
 
-
+add_action('woocommerce_before_variations_form', function() {
+    if (!empty($_GET)) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($)
+            {
+                <?php
+                foreach ($_GET as $key => $value) {
+                if (strpos($key, 'attribute_') === 0) {
+                ?>
+                $("select[name='<?php echo esc_js($key); ?>']").val('<?php echo esc_js($value); ?>').change();
+                <?php
+                }
+                }
+                ?>
+            });
+        </script>
+        <?php
+    }
+});
 
