@@ -81,7 +81,7 @@ jQuery(document).ready(function ($) {
 
                 $( document.body ).trigger( 'wc_fragment_refresh' );
                 $( document.body ).trigger('wc_update_cart');
-                
+
                 if(data.alert != 'no variation') {
                     $('.fancybox-cart').click();
                 }
@@ -224,6 +224,10 @@ jQuery(document).ready(function ($) {
         });
     });
 
-
+    $('.variations_form').on('change', '.variations select', function() {
+        var updatedUrl = new URL(window.location.href);
+        updatedUrl.searchParams.set($(this).attr('name'), $(this).val());
+        window.history.pushState({path: updatedUrl.href}, '', updatedUrl.href);
+    });
 
 });
