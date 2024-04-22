@@ -34,11 +34,12 @@ add_action('woocommerce_before_variations_form', function() {
             {
                 <?php
                 foreach ($_GET as $key => $value) {
-                if (strpos($key, 'attribute_') === 0) {
+
+
                 ?>
-                $("select[name='<?php echo esc_js($key); ?>']").val('<?php echo esc_js($value); ?>').change();
+                $("select[name='attribute_pa_<?php echo esc_js($key); ?>']").val('<?php echo esc_js($value); ?>').change();
                 <?php
-                }
+                
                 }
                 ?>
             });
