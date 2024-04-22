@@ -225,9 +225,17 @@ jQuery(document).ready(function ($) {
     });
 
     $('.variations_form').on('change', '.variations select', function() {
-        var updatedUrl = new URL(window.location.href);
-        updatedUrl.searchParams.set($(this).attr('name'), $(this).val());
+        let updatedUrl = new URL(window.location.href);
+        let string = $(this).attr('name');
+        let subString = 'attribute_pa_';
+        let atr = string.replace(subString, '');
+        updatedUrl.searchParams.set(atr, $(this).val());
         window.history.pushState({path: updatedUrl.href}, '', updatedUrl.href);
+    });
+
+    $(document).on('show_variation', '.single_variation', function (event, variation) {
+        $('p.ean span').text(variation.ean);
+
     });
 
 });

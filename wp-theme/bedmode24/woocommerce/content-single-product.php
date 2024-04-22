@@ -34,8 +34,11 @@ if ( post_password_required() ) {
 $show_sale = get_field('show_sale_label');
 $sale = get_field('sale_label');
 
+$ean = $product->get_meta('_ean');
+
 $cat = get_the_terms(get_the_ID(), 'product_cat');
 
+$short = wpautop($product->get_short_description());
 $description = $product->get_description();
 
 if ($product->is_type( 'variable' )) {
@@ -106,7 +109,18 @@ $attributes = $product->get_attributes();
 
                 <?php woocommerce_template_single_add_to_cart();?>
 
-                <?= $product->get_short_description();?>
+                <?= $short;?>
+
+                <?php if ($product->is_type('variable')) {
+                    $text_field = get_post_meta( $variation_id, 'ean_text', true );
+
+                    echo '<p class="ean">EAN <span>'. $text_field . '</span></p>';
+
+                }else{
+                    if($ean){
+                        echo '<p class="ean">EAN <span>'. $ean . '</span></p>';
+                    }
+                }?>
 
                 <?php get_template_part('parts/product_usps');?>
 
