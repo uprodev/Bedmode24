@@ -14,7 +14,7 @@ $merks = get_sub_field('product_eigenschappen_selector');
                     <a href="#" class="close-filter"><i class="fal fa-times"></i></a>
                     <h5 class="title-filter">Filteren</h5>
                     <div class="content-filter">
-                        <div style="width: 100%; height: 700px; background: blue;"></div>
+                        <?= do_shortcode('[br_filters_group group_id=425]');?>
                     </div>
                 </div>
                 <div class="content-item">
@@ -23,20 +23,10 @@ $merks = get_sub_field('product_eigenschappen_selector');
                             <a href="#"><i class="fal fa-filter"></i> Filter</a>
                         </div>
                         <div class="filter-select d-flex flex-wrap">
-                            <p>15 producten gevonden</p>
-                            <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>1 persoons</p>
-                            <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>Patroon</p>
-                            <p><a href="#" class="close-item-filter"><i class="fal fa-times"></i></a>Filters resetten</p>
+                            <?php woocommerce_result_count();?>
+                            <?= do_shortcode('[br_filters_group group_id=428]');?>
                         </div>
-                        <div class="select-block ">
-                            <label class="form-label" for="select"></label>
-                            <select id="select">
-                                <option value="0" selected disabled>Sorteren...</option>
-                                <option value="1">Populariteit</option>
-                                <option value="2">Prijs (oplopend) </option>
-                                <option value="3">Prijs (aflopend)</option>
-                            </select>
-                        </div>
+                        <?php woocommerce_catalog_ordering();?>
                     </div>
                     <div class="sorted-content d-flex flex-wrap">
 
@@ -84,16 +74,7 @@ $merks = get_sub_field('product_eigenschappen_selector');
                         endif;?>
 
                     </div>
-                    <div class="pagination-wrap">
-                        <ul class="pagination d-flex">
-                            <li><a href="#"><i class="far fa-chevron-left"></i></a></li>
-                            <li><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#"><i class="far fa-chevron-right"></i></a></li>
-                        </ul>
-                    </div>
+                    <?php woocommerce_pagination();?>
                 </div>
             </div>
         </div>

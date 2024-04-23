@@ -2,3 +2,7 @@
 Theme Name: bedmode24
 Description: Theme WP for Bedmode24
 */
+
+.reset_variations{
+    display: none!important;
+}
