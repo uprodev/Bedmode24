@@ -152,3 +152,5 @@ function change_alert_text( $params, $handle ) {
         $params['i18n_make_a_selection_text'] = get_field('alert', 'options');
     return $params;
 }
+
+
