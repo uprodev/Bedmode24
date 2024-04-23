@@ -41,10 +41,9 @@ $merks = get_sub_field('product_eigenschappen_selector');
                     <div class="sorted-content d-flex flex-wrap">
 
                         <?php if($default):
-
+                            
                             $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-
-                            $wp_query = new WP_Query([
+                            $args = [
                                 'post_type' => 'product',
                                 'posts_per_page' => 12,
                                 'paged' => $paged,
@@ -55,7 +54,10 @@ $merks = get_sub_field('product_eigenschappen_selector');
                                         'terms' => $merks
                                     ]
                                 ]
-                            ]);
+                            ];
+                            $args = berocket_filter_query_vars_hook($args);
+
+                            $wp_query = new WP_Query($args);
 
                             while($wp_query->have_posts()): $wp_query->the_post();?>
 
