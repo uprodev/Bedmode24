@@ -1,11 +1,11 @@
 <?php
 
-$img = get_field('background_image');
-$subtitle = get_field('subtitle');
-$title = get_field('title');
-$text = get_field('description');
-$link = get_field('cta_button');
-$link2 = get_field('second_button');
+$img = get_sub_field('background_image');
+$subtitle = get_sub_field('subtitle');
+$title = get_sub_field('title');
+$text = get_sub_field('description');
+$link = get_sub_field('cta_button');
+$link2 = get_sub_field('second_button');
 
 ?>
 
