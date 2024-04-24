@@ -144,7 +144,7 @@ function search_nieuws(){
         'post_types'  => 'nieuws',
         'relevanssi'  => true,
         'tax_query' => [
-            'relation' => 'OR',
+            'relation' => 'AND',
             [
                 'taxonomy' => 'nieuws_category',
                 'field' => 'id',
