@@ -25,8 +25,8 @@ $i = 1;
 
 <section class="base-3x ">
     <div class="container">
-        <div class="row">
-            <div class="content p-0 d-flex flex-wrap content-ajax">
+        <div class="row content-ajax">
+            <div class="content p-0 d-flex flex-wrap">
                 <?php while($wp_query->have_posts()): $wp_query->the_post();
 
                     get_template_part('parts/nieuws');

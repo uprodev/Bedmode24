@@ -64,7 +64,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
         <ul class="info-product d-flex flex-wrap align-items-start">
             <li class="li-info "><span></span> Op voorraad</li>
-            <li class="cost d-flex align-items-start">
+            <li class="cost d-flex align-items-start" style="display:none !important;">
                 <?php woocommerce_single_variation();?>
             </li>
 

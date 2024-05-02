@@ -234,8 +234,13 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('show_variation', '.single_variation', function (event, variation) {
+
+        $('p.price').html(variation.price_html);
+
         $('p.ean span').text(variation.ean);
 
     });
+
+
 
 });

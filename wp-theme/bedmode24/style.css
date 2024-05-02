@@ -3,6 +3,6 @@ Theme Name: bedmode24
 Description: Theme WP for Bedmode24
 */
 
-.reset_variations, .braapf_unselect_all{
+.reset_variations, .braapf_unselect_all, .bapf_sfa_taxonomy>span{
     display: none!important;
 }

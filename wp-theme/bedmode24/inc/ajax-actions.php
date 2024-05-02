@@ -162,17 +162,29 @@ function search_nieuws(){
 
     $query->parse_query( $args );
 
+    $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+    $max_pages = $query->max_num_pages;
     add_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
 
-    relevanssi_do_query( $query );
+    relevanssi_do_query( $query );?>
 
+        <div class="content p-0 d-flex flex-wrap">
+            <?php while($query->have_posts()): $query->the_post();
+                get_template_part('parts/nieuws');
 
-    while($query->have_posts()): $query->the_post();
-        get_template_part('parts/nieuws');
+            endwhile;?>
 
-    endwhile;
+        </div>
 
-    remove_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
+    <?php if( $paged < $max_pages ):?>
+
+        <div class="btn-wrap-full col-12 p-0 d-flex justify-content-center">
+            <a href="#" data-paged="<?= $paged;?>" data-max_page="<?= $max_pages;?>" class="btn-default rounded-5 btn-shadow btn-blue" id="aload">Meer laden</a>
+        </div>
+
+    <?php endif;?>
+
+    <?php remove_filter( 'pre_option_relevanssi_excerpts', '__return_false' );
 
     die();
 
