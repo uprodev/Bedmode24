@@ -39,7 +39,11 @@ if(is_shop()){
 }
 
 
+$actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
+$url = str_replace('product-category/','', $actual_link);
+
+echo $url;
 
 ?>
 

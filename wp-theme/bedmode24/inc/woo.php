@@ -153,4 +153,18 @@ function change_alert_text( $params, $handle ) {
     return $params;
 }
 
+//add_action( 'template_redirect', 'redirect_cat_to_relevant_filter' );
+
+function redirect_cat_to_relevant_filter() {
+    if ( is_product_category() ) {
+
+        $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+        $url = str_replace('product-category/','', $actual_link);
+
+        wp_safe_redirect( $url );
+        exit;
+    }
+}
+
 
