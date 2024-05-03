@@ -38,13 +38,6 @@ if(is_shop()){
     $desc = '<p>'.get_queried_object()->description.'</p>';
 }
 
-
-$actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-$url = str_replace('product-category/','', $actual_link);
-
-echo $url;
-
 ?>
 
     <section class="page-title-bg page-title-bg-small bg-light-grey">
