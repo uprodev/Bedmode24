@@ -32,12 +32,13 @@ $material = get_field('materiaal');
 
 $cat = get_the_terms(get_the_ID(), 'product_cat');
 
-if($show_sale):?>
-    <span class="label"><?= $sale;?></span>
-<?php endif;?>
+?>
 
 <figure>
     <a href="<?php the_permalink();?>">
+        <?php if($show_sale):?>
+        <span class="label"><?= $sale;?></span>
+        <?php endif;?>
         <?php woocommerce_template_loop_product_thumbnail();?>
 
         <?php if($show_material):?>
