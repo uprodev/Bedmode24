@@ -19,6 +19,8 @@ defined( 'ABSPATH' ) || exit;
 
 global $product;
 
+$show_stock = get_field('show_stock');
+
 $attribute_keys  = array_keys( $attributes );
 $variations_json = wp_json_encode( $available_variations );
 $variations_attr = function_exists( 'wc_esc_json' ) ? wc_esc_json( $variations_json ) : _wp_specialchars( $variations_json, ENT_QUOTES, 'UTF-8', true );
@@ -63,7 +65,11 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         </div>
 
         <ul class="info-product d-flex flex-wrap align-items-start">
-            <li class="li-info "><span></span> Op voorraad</li>
+
+            <?php if($show_stock):?>
+                <li class="li-info "><span></span> <?= __('Op voorraad', 'bedmode24');?></li>
+            <?php endif;?>
+
             <li class="cost d-flex align-items-start" style="display:none !important;">
                 <?php woocommerce_single_variation();?>
             </li>

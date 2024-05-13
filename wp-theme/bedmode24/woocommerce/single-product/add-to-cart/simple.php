@@ -22,6 +22,7 @@ global $product;
 if ( ! $product->is_purchasable() ) {
 	return;
 }
+$show_stock = get_field('show_stock');
 
 echo wc_get_stock_html( $product ); // WPCS: XSS ok.
 
@@ -41,9 +42,10 @@ if ( $product->is_in_stock() ) : ?>
             ?>
 
         </div>
-        <?php if($product->is_in_stock()):?>
+
+        <?php if($show_stock):?>
             <ul class="info-product d-flex flex-wrap align-items-start">
-                <li class="li-info "><span></span> Op voorraad</li>
+                <li class="li-info "><span></span> <?= __('Op voorraad', 'bedmode24');?></li>
             </ul>
         <?php endif;?>
 

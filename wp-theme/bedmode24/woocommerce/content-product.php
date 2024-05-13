@@ -29,6 +29,7 @@ $show_new = get_field('show_new_label');
 $new = get_field('new_label');
 $show_material = get_field('show_material_label');
 $material = get_field('materiaal');
+$show_stock = get_field('show_stock');
 
 $cat = get_the_terms(get_the_ID(), 'product_cat');
 
@@ -55,7 +56,10 @@ $cat = get_the_terms(get_the_ID(), 'product_cat');
         <p class="subtitle"><?= $cat[0]->name;?></p>
     <?php endif;?>
     <h6 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h6>
-    <div class="<?= $product->is_in_stock()?'on':'off';?> info"><span></span>Op voorraad</div>
+
+    <?php if($show_stock):?>
+        <div class="<?= $product->is_in_stock()?'on':'off';?> info"><span></span><?= __('Op voorraad', 'bedmode24');?></div>
+    <?php endif;?>
     <p class="price"><?php woocommerce_template_loop_price();?></p>
 
     <?php woocommerce_template_loop_add_to_cart();?>

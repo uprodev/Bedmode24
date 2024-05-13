@@ -235,7 +235,11 @@ jQuery(document).ready(function ($) {
 
     $(document).on('show_variation', '.single_variation', function (event, variation) {
 
-        $('p.price').html(variation.price_html);
+        if(variation.price_html!=''){
+            $('p.price').html(variation.price_html);
+        }else{
+            $('p.price').html('<del><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">€</span> '+variation.display_regular_price+'</bdi></span></del><ins><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">€</span> '+variation.display_price+'</bdi></span></ins>');
+        }
 
         $('p.ean span').text(variation.ean);
 
